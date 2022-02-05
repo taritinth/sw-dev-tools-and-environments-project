@@ -26,7 +26,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
+    // '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
   ],
@@ -37,10 +37,34 @@ export default {
     '@nuxtjs/axios',
   ],
 
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/auth/login',
+            method: 'post',
+            propertyName: 'accessToken',
+          },
+          user: { url: '/auth/me', method: 'get', propertyName: '' },
+          logout: false,
+        },
+      },
+      // tokenName: 'Authorization'
+    },
+    redirect: {
+      login: '/login',
+      logout: '/',
+    },
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL:
+      process.env.NODE_ENV === 'production'
+        ? 'http://localhost:8080'
+        : 'http://localhost:8080',
+    withCredentials: true,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
