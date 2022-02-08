@@ -1,7 +1,7 @@
 <template>
-  <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
+  <div class="bg-blue-50 md:flex flex-col md:flex-row md:min-h-screen w-full">
     <div
-      class="flex flex-col border-r border-gray-800 w-full md:w-64 text-gray-700 bg-my-movie-mood dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0 h-screen sticky top-0"
+      class="flex flex-col border-r border-gray-800 w-full md:w-64 text-gray-700 dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0 h-screen sticky top-0"
     >
       <div
         class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between"
