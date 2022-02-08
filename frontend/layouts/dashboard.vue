@@ -1,31 +1,47 @@
 <template>
-  <div class="bg-blue-50 md:flex flex-col md:flex-row md:min-h-screen w-full">
+  <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
     <div
-      class="flex flex-col border-r border-gray-800 w-full md:w-64 text-gray-700 dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0 h-screen sticky top-0"
+      class="flex flex-col border-r border-gray-800 w-full md:w-3/12 text-gray-700 bg-my-movie-mood dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0 h-screen sticky top-0"
     >
       <div
-        class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between"
+        class="flex-shrink-0 flex flex-row justify-between h-full bg-red-500"
       >
-        <router-link to="/" class="flex items-center h-12"> </router-link>
-        <button
-          class="rounded-lg md:hidden rounded-lg focus:outline-none focus:shadow-outline"
-          @click="open = !open"
-        >
-          <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
-            <path
-              x-show="!open"
-              fill-rule="evenodd"
-              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-              clip-rule="evenodd"
-            ></path>
-            <path
-              x-show="open"
-              fill-rule="evenodd"
-              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-        </button>
+        <div class="flex flex-col w-full">
+          <div class="flex h-1/3 bg-blue-400 px-10 py-5">
+              <div class="flex w-full items-center justify-center">
+                <div class="flex w-32 h-32">
+                  <img class="object-center rounded-full object-cover" src="https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8aGlraW5nfGVufDB8fDB8fA%3D%3D&w=1000&q=80">
+                </div>
+              </div>
+              <div class="flex w-full items-center justify-center">
+                <p class="text-white text-2xl font-medium">
+                  Salinya Timklip
+                </p>
+              </div>
+          </div>
+          <div class="flex flex-col bg-blue-400 h-full">
+            <div class="flex w-full">
+              <button class="flex w-full h-full py-6 px-4 text-blue-500 font-medium bg-white">
+                Home
+              </button>
+            </div>
+            <div class="flex w-full">
+              <button class="flex w-full h-full py-6 px-4 text-white font-medium">
+                Profile
+              </button>
+            </div>
+            <div class="flex w-full ">
+              <button class="flex w-full h-full py-6 px-4 text-white font-medium">
+                Search Job
+              </button>
+            </div>
+            <div class="flex w-full">
+              <button class="flex w-full h-full py-6 px-4 text-white font-medium">
+                Applied
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
