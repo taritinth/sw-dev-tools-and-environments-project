@@ -85,9 +85,9 @@
       <div
         v-if="showDetails"
         style="background-color: rgba(0, 0, 0, 0.25)"
-        class="fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto"
+        class="fixed top-0 left-0 w-full h-full flex items-center shadow-lg"
       >
-        <div class="container mx-auto md:px-12 lg:px-48 overflow-y-auto">
+        <div class="container mx-auto md:px-12 lg:px-48">
           <application-details
             :application="application"
             @update="onUpateModal"

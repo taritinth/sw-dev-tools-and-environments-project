@@ -24,11 +24,6 @@
 
       <form v-if="user" method="put" @submit.prevent="submitForm">
         <div
-          v-if="
-            $v.user.fullname.$error ||
-            $v.user.email.$error ||
-            $v.user.phone.$error
-          "
           class="flex p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800"
           role="alert"
         >
@@ -44,15 +39,21 @@
               clip-rule="evenodd"
             ></path>
           </svg>
-          <div>
+          <div v-if="$auth.user.type == 'user'">
             <span class="font-medium">Warning !</span> Please complete your
             profile before submit the job.
+            <strong>(includes Profile Picture, Resume, Fullname, Phone)</strong>
+          </div>
+          <div v-else>
+            <span class="font-medium">Warning !</span> Please complete your
+            profile before create job announcement.
+            <strong>(includes Profile Picture, Fullname, Phone)</strong>
           </div>
         </div>
 
         <!-- <img :src="profile" /> -->
 
-        <div class="flex justify-center">
+        <div class="flex justify-center mt-5">
           <div class="relative rounded-full h-48 w-48 bg-blue-50">
             <div v-if="$auth.user.type == 'user'">
               <img
@@ -116,7 +117,7 @@
               :class="{
                 'text-red-500': $v.user.fullname.$error,
               }"
-              >Fullname</label
+              >Fullname<span class="text-red-400">*</span></label
             >
             <input
               v-model="$v.user.fullname.$model"
@@ -149,7 +150,7 @@
               :class="{
                 'text-red-500': $v.user.email.$error,
               }"
-              >Email</label
+              >Email<span class="text-red-400">*</span></label
             >
             <input
               disabled
@@ -180,7 +181,7 @@
               :class="{
                 'text-red-500': $v.user.phone.$error,
               }"
-              >Phone</label
+              >Phone<span class="text-red-400">*</span></label
             >
             <input
               v-model="$v.user.phone.$model"
@@ -277,7 +278,7 @@
           class="w-full mb-5"
         >
           <label class="block mb-2 text-sm font-medium text-gray-900"
-            >Resume</label
+            >Resume<span class="text-red-400">*</span></label
           >
           <a
             v-if="user.resumeFile"

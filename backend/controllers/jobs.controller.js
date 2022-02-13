@@ -12,7 +12,7 @@ const getAllJobs = async (req, res) => {
       },
     ],
   })
-    .populate("company")
+    .populate("company", "-password")
     .sort({ createdAt: -1 })
     .then((jobs) => res.json(jobs))
     .catch((err) => {
