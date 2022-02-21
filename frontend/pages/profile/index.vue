@@ -464,11 +464,11 @@ export default {
           const headers = { 'Content-Type': 'multipart/form-data' }
           const response = await axios.put('/users', formData, {
             headers,
-            onUploadProgress: function (progressEvent) {
+            onUploadProgress: (progressEvent) => {
               this.uploadPercentage = parseInt(
                 Math.round((progressEvent.loaded / progressEvent.total) * 100)
               )
-            }.bind(this),
+            },
           })
           console.log(response)
 
