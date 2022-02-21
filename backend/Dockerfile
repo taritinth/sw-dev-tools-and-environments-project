@@ -1,13 +1,11 @@
-FROM node:14-alpine
-
-ENV NODE_ENV=production
-
-RUN apk add git
+FROM node:16.13.2-alpine
 
 WORKDIR /app
-COPY package*.json /app
+COPY package*.json ./
 RUN npm install --production
-COPY . /app
+COPY . .
+
+ENV NODE_ENV=production
 
 EXPOSE 8080
 
