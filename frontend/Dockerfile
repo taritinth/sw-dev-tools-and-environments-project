@@ -1,17 +1,21 @@
-FROM node:14-alpine
-
-RUN apk add git
+FROM node:16.13.2-alpine as builder
 
 WORKDIR /app
-COPY package*.json /app
-RUN npm install
-COPY . /app
+COPY package*.json ./
+RUN npm install --production
+COPY . .
 RUN npm run build
 
-EXPOSE 5000
+FROM node:16.13.2-alpine
 
-#ENV
+WORKDIR /app
+COPY --from=builder /app  .
+
+ENV NODE_ENV=production
+
 ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=5000
+
+EXPOSE 5000
 
 CMD [ "npm", "start" ]
