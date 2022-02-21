@@ -1,3 +1,6 @@
 // IMPORT HELPER HERE
+const auth = require("./auth");
+const multer = require("./multer");
+const s3 = require("./s3");
 
-module.exports = {}; // EXPORT USING SPREAD SYNTAX
+module.exports = { ...auth, ...multer, ...s3 }; // EXPORT USING SPREAD SYNTAX
