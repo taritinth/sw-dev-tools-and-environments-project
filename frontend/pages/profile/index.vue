@@ -187,7 +187,7 @@
               v-model="$v.user.phone.$model"
               type="text"
               id="base-input"
-              placeholder="xxx-xxx-xxxx"
+              placeholder="Phone"
               class="border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-2 focus:outline-none block w-full p-3"
               :class="{
                 'border-red-400 text-red-500 placeholder-red-400 focus:ring-red-300':

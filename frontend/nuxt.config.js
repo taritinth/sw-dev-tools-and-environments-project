@@ -28,21 +28,12 @@ export default {
     { src: '~/assets/css/custom.css', lang: 'css' },
     { src: '~/assets/quill.css', lang: 'css' },
     { src: '~/assets/css/flowbite.css', lang: 'css' },
-    // ...
-    // 'quill/dist/quill.core.css',
-    // // for snow theme
-    // 'quill/dist/quill.snow.css',
-    // // for bubble theme
-    // 'quill/dist/quill.bubble.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/vuelidate', ssr: true },
     { src: '~plugins/nuxt-quill-plugin', ssr: false },
-    // { src: '~plugins/flowbite', ssr: false },
-    // { src: '~plugins/datepicker', ssr: false },
-    // { src: '~/plugins/quill-editor.js', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

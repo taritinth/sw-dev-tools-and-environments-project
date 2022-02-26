@@ -21,20 +21,19 @@
                 industry or field.
               </p>
             </div>
-            <div>
-              <button
-                @click="
-                  $router.push({
-                    path: '/search',
-                    query: { query: '', type: 'internship' },
-                  })
-                "
-                type="button"
-                class="text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
-              >
-                Explore
-              </button>
-            </div>
+            <button
+              @click="
+                $router.push({
+                  path: '/search',
+                  query: { query: '', type: 'internship' },
+                })
+              "
+              type="button"
+              class="text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
+              style="height: fit-content"
+            >
+              Explore
+            </button>
           </div>
         </div>
 
@@ -53,20 +52,20 @@
                 typically 40–42 hours per week as full-time work.
               </p>
             </div>
-            <div>
-              <button
-                @click="
-                  $router.push({
-                    path: '/search',
-                    query: { query: '', type: 'fulltime' },
-                  })
-                "
-                type="button"
-                class="text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
-              >
-                Explore
-              </button>
-            </div>
+
+            <button
+              @click="
+                $router.push({
+                  path: '/search',
+                  query: { query: '', type: 'fulltime' },
+                })
+              "
+              type="button"
+              class="text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
+              style="height: fit-content"
+            >
+              Explore
+            </button>
           </div>
         </div>
 
@@ -85,25 +84,24 @@
                 legally considered full-time or part-time employment.
               </p>
             </div>
-            <div>
-              <button
-                @click="
-                  $router.push({
-                    path: '/search',
-                    query: { query: '', type: 'parttime' },
-                  })
-                "
-                type="button"
-                class="text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
-              >
-                Explore
-              </button>
-            </div>
+            <button
+              @click="
+                $router.push({
+                  path: '/search',
+                  query: { query: '', type: 'parttime' },
+                })
+              "
+              type="button"
+              class="text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
+              style="height: fit-content"
+            >
+              Explore
+            </button>
           </div>
         </div>
       </div>
       <div v-if="$auth.loggedIn && $auth.user.type == 'company'" class="">
-        <announcements-list></announcements-list>
+        <announcements-list />
       </div>
     </div>
   </div>
