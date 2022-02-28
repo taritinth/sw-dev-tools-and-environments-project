@@ -1,7 +1,7 @@
 <template>
   <div class="container md:max-w-screen-md lg:max-w-screen-lg mx-auto">
     <div class="pt-8">
-      <h1 class="mb-5 text-2xl text-gray-800 dark:text-gray-500">Search</h1>
+      <h1 class="mb-5 text-2xl text-gray-800 dark:text-gray-500" data-test="title">Search</h1>
 
       <div class="flex flex-col sm:flex-row gap-3 mb-6">
         <div class="relative w-full">
@@ -22,6 +22,7 @@
             v-model="query"
             @input="onSearch"
             type="text"
+            data-test="search-input"
             placeholder="What are you looking for..."
             class="border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-2 focus:ring-blue-300 focus:outline-none block w-full py-3 pl-12"
           />
@@ -50,7 +51,7 @@
             :class="{ 'text-gray-400': !type }"
           >
             <option value="">Job type</option>
-            <option value="parttime">Part-time</option>
+            <option value="parttime" >Part-time</option>
             <option value="fulltime">Full-time</option>
             <option value="internship">Internship</option>
           </select>
@@ -67,6 +68,7 @@
           :key="index"
           @click="showJobDesc(job)"
           class="flex flex-col items-start justify-between rounded-3xl h-80 bg-white p-8 shadow-1 cursor-pointer"
+          data-test="job"
         >
           <div class="block">
             <job-title :title="job.title" :company="job.company" />
@@ -103,11 +105,12 @@
 </template>
 
 <script>
-import { axios } from '@/plugins/axios'
+import axios from 'axios'
 import JobDescription from '../../components/JobDescription.vue'
 import JobTitle from '../../components/JobTitle.vue'
 
 export default {
+  name: 'SearchPage',
   components: { JobDescription, JobTitle },
   layout: 'dashboard',
   data() {

@@ -20,7 +20,7 @@
         </div>
     </div> -->
     <div class="pt-8">
-      <h1 class="mb-5 text-2xl text-gray-800 dark:text-gray-500">Profile</h1>
+      <h1 class="mb-5 text-2xl text-gray-800 dark:text-gray-500" data-test="title">Profile</h1>
 
       <form v-if="user" method="put" @submit.prevent="submitForm">
         <div
@@ -112,6 +112,7 @@
         <div class="w-full">
           <div class="mb-6">
             <label
+              data-test="fullname-label"
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900"
               :class="{
@@ -145,6 +146,7 @@
         <div class="grid xl:grid-cols-2 xl:gap-6">
           <div class="mb-6">
             <label
+              data-test="email-label"
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900"
               :class="{
@@ -164,6 +166,7 @@
                   $v.user.email.$error,
                 'focus:ring-blue-300': !$v.user.email.$error,
               }"
+              data-test="email-input"
             />
             <template v-if="$v.user.email.$error">
               <p
@@ -176,6 +179,7 @@
           </div>
           <div class="mb-6">
             <label
+              data-test="phone-label"
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900"
               :class="{
@@ -186,6 +190,7 @@
             <input
               v-model="$v.user.phone.$model"
               type="text"
+              data-test="phone-input"
               id="base-input"
               placeholder="Phone"
               class="border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-2 focus:outline-none block w-full p-3"
@@ -215,6 +220,7 @@
         <div v-if="$auth.loggedIn && $auth.user.type == 'user'" class="w-full">
           <div class="mb-6">
             <label
+              data-test="education-label"
               for="base-input"
               class="block mb-2 text-sm font-medium text-gray-900"
               >Education</label
@@ -277,7 +283,7 @@
           v-if="$auth.loggedIn && $auth.user.type == 'user'"
           class="w-full mb-5"
         >
-          <label class="block mb-2 text-sm font-medium text-gray-900"
+          <label data-test="resume-label" class="block mb-2 text-sm font-medium text-gray-900"
             >Resume<span class="text-red-400">*</span></label
           >
           <a
@@ -336,6 +342,7 @@
             class="inline-flex justify-center w-full text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
             :class="{ 'cursor-not-allowed': loading }"
             :disabled="loading"
+            data-test="save-button"
           >
             <svg
               v-if="loading"
@@ -371,6 +378,7 @@ import { axios } from '@/plugins/axios'
 import { required, minValue, maxLength } from 'vuelidate/lib/validators'
 
 export default {
+  name: "ProfilePage",
   middleware: ['auth'],
   layout: 'dashboard',
   data() {

@@ -54,7 +54,6 @@
             Sign in
           </button>
         </div>
-
         <div class="flex items-center justify-center mt-10">
           <div class="text-sm">
             <span class="font-light text-gray-500"
@@ -77,6 +76,7 @@ import { axios } from '@/plugins/axios'
 import { required, minValue } from 'vuelidate/lib/validators'
 
 export default {
+  name: 'signInPage',
   middleware: ['isNotLoggedIn'],
   //   layout: 'dashboard',
   data() {
