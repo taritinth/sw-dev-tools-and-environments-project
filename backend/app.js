@@ -29,3 +29,5 @@ mongoose.connect(uri);
 mongoose.connection.once('open', () => {
     console.log("MongoDB connection established successfully");
 })
+
+module.exports = app;

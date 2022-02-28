@@ -4,7 +4,8 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "jest --runInBand --force-exit --coverage"
   },
   "license": "MIT",
   "dependencies": {
@@ -20,6 +21,7 @@
     "sharp": "^0.30.1"
   },
   "devDependencies": {
+    "jest": "^27.5.1",
     "nodemon": "^2.0.15"
   }
 }
