@@ -116,7 +116,7 @@
                 alt="profile img"
               />
             </div>
-            <div class="truncate">
+            <div id="navFullname" class="truncate">
               {{ $auth.user.fullname }}
             </div>
           </router-link>
@@ -236,7 +236,7 @@ export default {
     },
     async loadConfig() {
       try {
-        const response = await axios.get(`/configs`)
+        const response = await axios.get(`/api/configs`)
         console.log(response)
 
         this.setConfig(response.data)

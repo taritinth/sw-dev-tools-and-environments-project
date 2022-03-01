@@ -135,6 +135,7 @@
             <template v-if="$v.user.fullname.$error">
               <p
                 v-if="!$v.user.fullname.required"
+                id="fullNameTextField"
                 class="mt-2 text-sm text-red-400"
               >
                 This field is required
@@ -422,7 +423,9 @@ export default {
       try {
         this.loading = true
 
-        const response = await axios.get(`/users/${this.$nuxt.$auth.user.id}`)
+        const response = await axios.get(
+          `/api/users/${this.$nuxt.$auth.user.id}`
+        )
         console.log(response)
 
         this.user = response.data
@@ -470,7 +473,7 @@ export default {
           console.log(formData)
 
           const headers = { 'Content-Type': 'multipart/form-data' }
-          const response = await axios.put('/users', formData, {
+          const response = await axios.put('/api/users', formData, {
             headers,
             onUploadProgress: (progressEvent) => {
               this.uploadPercentage = parseInt(

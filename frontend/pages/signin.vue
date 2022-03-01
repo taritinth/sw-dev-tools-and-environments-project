@@ -20,6 +20,7 @@
               'focus:ring-blue-300': !$v.email.$error,
             }"
             type="text"
+            id="email"
             placeholder="E-Mail"
           />
           <template v-if="$v.email.$error">
@@ -38,6 +39,7 @@
               'focus:ring-blue-300': !$v.password.$error,
             }"
             type="password"
+            id="password"
             placeholder="Password"
           />
           <template v-if="$v.password.$error">
@@ -48,6 +50,7 @@
         </div>
         <div class="mt-12">
           <button
+            id="submit"
             type="submit"
             class="w-full text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
           >

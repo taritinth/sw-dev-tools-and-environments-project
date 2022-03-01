@@ -1,7 +1,9 @@
 <template>
   <div class="container md:max-w-screen-md lg:max-w-screen-lg mx-auto">
     <div class="pt-8">
-      <h1 class="mb-5 text-2xl text-gray-800 dark:text-gray-500" id="title">Home</h1>
+      <h1 class="mb-5 text-2xl text-gray-800 dark:text-gray-500" id="title">
+        Home
+      </h1>
       <div
         v-if="!$auth.loggedIn || ($auth.loggedIn && $auth.user.type == 'user')"
         class="flex flex-col gap-6"
@@ -41,7 +43,11 @@
         <div
           class="flex flex-col items-center rounded-3xl bg-white px-12 py-16 shadow-1"
         >
-          <h1 class="text-3xl font-medium self-start" data-testid="h1" id="fullTime">
+          <h1
+            class="text-3xl font-medium self-start"
+            data-testid="h1"
+            id="fullTime"
+          >
             Search for Full-time jobs
           </h1>
           <div class="flex flex-col md:flex-row mt-8">
@@ -119,9 +125,9 @@ export default {
   data() {
     return {
       test: 'Hello World!',
-      email: 'angel'
+      email: 'angel',
     }
   },
-  methods: { },
+  methods: {},
 }
 </script>

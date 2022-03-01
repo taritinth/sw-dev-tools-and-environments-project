@@ -209,7 +209,7 @@ export default {
           type: this.type,
         }
         try {
-          const response = await axios.post(`/auth/signup`, payload)
+          const response = await axios.post(`/api/auth/signup`, payload)
           console.log(response)
           this.$toast.success(`Successfully, Let's sign in to find careers !`)
           this.$router.push('/signin')
@@ -222,7 +222,7 @@ export default {
     },
     async loadConfig() {
       try {
-        const response = await axios.get(`/configs`)
+        const response = await axios.get(`/api/configs`)
         console.log(response)
 
         this.setConfig(response.data)

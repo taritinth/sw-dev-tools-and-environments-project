@@ -2,8 +2,8 @@ import axios from 'axios'
 const instance = axios.create({
   baseURL:
     process.env.NODE_ENV === 'production'
-      ? 'http://18.140.121.44:8080/api'
-      : 'http://localhost:8080/api',
+      ? 'http://18.140.121.44:8080'
+      : 'http://localhost:8080',
 })
 
 const getToken = function () {
@@ -19,14 +19,10 @@ const getToken = function () {
 // const CancelToken = axios.CancelToken
 // let cancel
 
-const isSecured = ['omdbapi']
-
 instance.interceptors.request.use(
   (config) => {
     const token = getToken()
-    const url = config.url
-
-    if (token && !isSecured.includes(url.replace(/.+\/\/|www.|\..+/g, ''))) {
+    if (token) {
       config.headers.Authorization = token
     }
 

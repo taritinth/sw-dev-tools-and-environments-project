@@ -1,7 +1,12 @@
 <template>
   <div class="container md:max-w-screen-md lg:max-w-screen-lg mx-auto">
     <div class="pt-8">
-      <h1 class="mb-5 text-2xl text-gray-800 dark:text-gray-500" data-test="title">Search</h1>
+      <h1
+        class="mb-5 text-2xl text-gray-800 dark:text-gray-500"
+        data-test="title"
+      >
+        Search
+      </h1>
 
       <div class="flex flex-col sm:flex-row gap-3 mb-6">
         <div class="relative w-full">
@@ -51,7 +56,7 @@
             :class="{ 'text-gray-400': !type }"
           >
             <option value="">Job type</option>
-            <option value="parttime" >Part-time</option>
+            <option value="parttime">Part-time</option>
             <option value="fulltime">Full-time</option>
             <option value="internship">Internship</option>
           </select>
@@ -105,12 +110,12 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { axios } from '@/plugins/axios'
 import JobDescription from '../../components/JobDescription.vue'
 import JobTitle from '../../components/JobTitle.vue'
 
 export default {
-  name: 'SearchPage',
+  name: 'Search',
   components: { JobDescription, JobTitle },
   layout: 'dashboard',
   data() {
@@ -149,7 +154,7 @@ export default {
           query: { query: this.query, type: this.type },
         })
 
-        const response = await axios.get(`/jobs?${params}`)
+        const response = await axios.get(`/api/jobs?${params}`)
         console.log(response)
 
         this.jobs = response.data
@@ -164,7 +169,9 @@ export default {
       try {
         this.loading = true
 
-        const response = await axios.get(`/users/${this.$nuxt.$auth.user.id}`)
+        const response = await axios.get(
+          `/api/users/${this.$nuxt.$auth.user.id}`
+        )
         console.log(response)
 
         this.user = response.data

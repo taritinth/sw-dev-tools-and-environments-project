@@ -368,7 +368,7 @@ export default {
           status: status,
         }
         const response = await axios.put(
-          `/applications/${this.application._id}`,
+          `/api/applications/${this.application._id}`,
           data
         )
         console.log(response)
@@ -389,7 +389,7 @@ export default {
     async getApplication() {
       try {
         const response = await axios.get(
-          `/applications/${this.application._id}`
+          `/api/applications/${this.application._id}`
         )
         console.log(response)
 

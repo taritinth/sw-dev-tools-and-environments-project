@@ -340,7 +340,7 @@ export default {
           type: this.type,
           description: this.description,
         }
-        const response = await axios.post('/jobs', data)
+        const response = await axios.post('/api/jobs', data)
         console.log(response)
 
         if (response.data?.success) {
