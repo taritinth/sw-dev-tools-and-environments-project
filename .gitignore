@@ -91,6 +91,3 @@ sw.*
 
 #.env
 .env
-
-# jest
-.nuxt-build-jest

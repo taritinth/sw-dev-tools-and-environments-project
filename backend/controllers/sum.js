@@ -1,6 +1,6 @@
 class Sum {
-    add(a, b) {
-      return (a + b);
-    }
+  add(a, b) {
+    return a + b;
   }
-  module.exports = new Sum();
+}
+module.exports = new Sum();
