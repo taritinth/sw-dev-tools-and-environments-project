@@ -16,11 +16,9 @@ const isJobEmployer = async (req, res, next) => {
   Job.findById(id)
     .then((job) => {
       if (req.user.id == job.company.toString()) {
-        console.log(`isJobEmployer: checked`);
         return next();
       }
-      console.log("isJobEmployer : false");
-      res.status(401).send("UNAUTHORIZED : isJobEmplyer => false");
+      res.status(401).send("Unauthorized");
     })
     .catch((err) => {
       console.log(err);

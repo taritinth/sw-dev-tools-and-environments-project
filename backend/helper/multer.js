@@ -25,4 +25,5 @@ let filesUpload = upload.fields([
   { name: "profile", maxCount: 1 },
   { name: "resume", maxCount: 1 },
 ]);
+
 module.exports = { filesUpload };

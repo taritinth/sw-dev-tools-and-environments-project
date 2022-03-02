@@ -5,6 +5,8 @@ const { User } = require("../models/users.model");
 const { ObjectId } = require("mongoose").Types;
 const {
   findAllApplications,
+  findApplicationById,
+  findAndUpdateApplication,
 } = require("../repository/applications.repository");
 
 const getAllApps = async (req, res) => {
@@ -21,13 +23,10 @@ const getAllApps = async (req, res) => {
     });
 };
 
-const getApps = async (req, res) => {
+const getApp = async (req, res) => {
   let { id } = req.params;
 
-  Application.findById(id)
-    .populate("job")
-    .populate("company", "-password -createdAt -updatedAt")
-    .populate("user", "-password -createdAt -updatedAt")
+  findApplicationById({ id })
     .then((apps) => res.json(apps))
     .catch((err) => {
       console.log(err);
@@ -35,7 +34,7 @@ const getApps = async (req, res) => {
     });
 };
 
-const addApps = async (req, res) => {
+const addApp = async (req, res) => {
   let { job, company } = req.body;
   let user = req.user.id;
   const check = await Application.find({
@@ -94,14 +93,13 @@ const addApps = async (req, res) => {
     });
 };
 
-const updateApps = async (req, res) => {
+const updateApp = async (req, res) => {
   let { id } = req.params;
   let { status } = req.body;
+
   //let result = await User.where({ _id: id }).updateOne({phone})
-  Application.where({ _id: id })
-    .updateOne({
-      status,
-    })
+
+  findAndUpdateApplication({ id, status })
     .then(() =>
       res.json({
         message: "Successfully, Application has updated",
@@ -114,4 +112,4 @@ const updateApps = async (req, res) => {
     });
 };
 
-module.exports = { getAllApps, getApps, addApps, updateApps };
+module.exports = { getAllApps, getApp, addApp, updateApp };

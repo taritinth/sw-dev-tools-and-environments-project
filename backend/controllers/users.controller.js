@@ -7,7 +7,7 @@ const fs = require("fs");
 const getAllUsers = async (req, res) => {
   User.find()
     //.select("email -_id type ")
-    .select({ email: 1, type: 1 })
+    // .select({ email: 1, type: 1 })
     .then((user) => res.json(user))
     .catch((err) => {
       console.log(err);

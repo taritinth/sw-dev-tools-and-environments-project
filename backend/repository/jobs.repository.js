@@ -1,7 +1,7 @@
 const { Job } = require("../models/jobs.model");
 
-const findAllJobs = ({ title, type }) => {
-  return Job.find({
+const findAllJobs = ({ title, type }) =>
+  Job.find({
     $or: [
       {
         title: new RegExp(title, "i"),
@@ -11,7 +11,6 @@ const findAllJobs = ({ title, type }) => {
   })
     .populate("company", "-password")
     .sort({ createdAt: -1 });
-};
 
 module.exports = {
   findAllJobs,
