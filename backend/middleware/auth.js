@@ -6,7 +6,7 @@ const accessToken = process.env.JWT_SECRET;
 const isAuth = async (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader?.includes("Bearer ")) {
-    return res.json({
+    return res.status(401).json({
       requireAuth: true,
       message: "Invalid token",
     });

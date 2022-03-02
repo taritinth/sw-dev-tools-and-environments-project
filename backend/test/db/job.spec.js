@@ -2,12 +2,12 @@ const { expect } = require("chai");
 const mongoose = require("mongoose");
 const mongoUnit = require("mongo-unit");
 
-const mockJobs = require("./jobs.json");
+const mockData = require("../__mock__/data");
 const { getJobs } = require("../../repository/jobs.repository");
 
 describe("jobs", () => {
   before(() => mongoose.connect(process.env.MONGO_TEST_URL));
-  beforeEach(() => mongoUnit.load(mockJobs));
+  beforeEach(() => mongoUnit.load(mockData));
   afterEach(() => mongoUnit.drop());
 
   it(`should handle undefined query value`, () => {

@@ -3,25 +3,15 @@ const { Application } = require("../models/applications.model");
 const { Job } = require("../models/jobs.model");
 const { User } = require("../models/users.model");
 const { ObjectId } = require("mongoose").Types;
+const { getApplications } = require("../repository/applications.repository");
 
 const getAllApps = async (req, res) => {
   const { status } = req.query;
 
-  Application.find({
-    $or: [
-      {
-        companyId: new ObjectId(req.user.id),
-      },
-      {
-        userId: new ObjectId(req.user.id),
-      },
-    ],
-    $and: [{ status: new RegExp(status, "i") }],
+  getApplications({
+    status: status,
+    userId: req.user.id,
   })
-    .populate("job")
-    .populate("company", "-password -createdAt -updatedAt")
-    .populate("user", "-password -createdAt -updatedAt")
-    .sort({ createdAt: -1 })
     .then((apps) => res.json(apps))
     .catch((err) => {
       console.log(err);
