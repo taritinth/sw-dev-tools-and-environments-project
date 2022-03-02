@@ -45,7 +45,7 @@ const addApp = async (req, res) => {
   });
 
   if (check.length)
-    return res.json({
+    return res.status(400).json({
       message:
         "Failed, You have already applied for this job to this company before",
       success: false,
@@ -62,7 +62,7 @@ const addApp = async (req, res) => {
     !userObj.profileImg ||
     !userObj.resumeFile
   )
-    return res.json({
+    return res.status(400).json({
       message: "Warning, Please complete your profile before submit the job.",
       success: false,
     });

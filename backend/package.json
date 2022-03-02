@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon app.js",
     "start": "cross-env NODE_ENV=production node app.js",
-    "test:api": "cross-env NODE_ENV=test nyc --reporter=text mocha test/api/**/*.spec.js --delay",
-    "test:db": "cross-env NODE_ENV=test nyc --reporter=text mocha test/db/**/*.spec.js --delay"
+    "test:api": "cross-env NODE_ENV=test nyc --reporter=text mocha test/api/**/*.spec.js --delay --no-timeout",
+    "test:db": "cross-env NODE_ENV=test nyc --reporter=text mocha test/db/**/*.spec.js --delay --no-timeout"
   },
   "license": "MIT",
   "dependencies": {

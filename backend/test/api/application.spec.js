@@ -21,7 +21,7 @@ describe("applications", () => {
   it("should response status 200 ok and list of applications", async () => {
     const response = await request(app)
       .get("/api/applications?status=")
-      .set("Authorization", token.TARIT);
+      .set("Authorization", token.APPLICANT1);
     expect(response.body.length).to.equal(1);
     expect(response.statusCode).to.equal(200);
   });
@@ -29,7 +29,7 @@ describe("applications", () => {
   it("should response status 200 and application detail for owner (user, company)", async () => {
     const response = await request(app)
       .get("/api/applications/621fa436e634d23ac1bd7b78")
-      .set("Authorization", token.TESTER_APPLICANT);
+      .set("Authorization", token.APPLICANT2);
     expect(response.body._id).to.equal("621fa436e634d23ac1bd7b78");
     expect(response.statusCode).to.equal(200);
   });
@@ -37,7 +37,38 @@ describe("applications", () => {
   it("should response status 401 for anyone not owner (user, company)", async () => {
     const response = await request(app)
       .get("/api/applications/621f4e0ce634d23ac1bd7b3b")
-      .set("Authorization", token.TESTER_APPLICANT);
+      .set("Authorization", token.APPLICANT2);
     expect(response.statusCode).to.equal(401);
+  });
+
+  it("should handle applicant send duplicate application", async () => {
+    const response = await request(app)
+      .post("/api/applications")
+      .set("Authorization", token.APPLICANT2)
+      .send({
+        job: "62091985a3f9106fed159b31",
+        company: "62091715a3f9106fed159ae6",
+      });
+    expect(response.statusCode).to.equal(400);
+    expect(response.body).to.eql({
+      message:
+        "Failed, You have already applied for this job to this company before",
+      success: false,
+    });
+  });
+
+  it("should handle applicant who not complete their profile", async () => {
+    const response = await request(app)
+      .post("/api/applications")
+      .set("Authorization", token.APPLICANT3)
+      .send({
+        job: "62091985a3f9106fed159b31",
+        company: "62091715a3f9106fed159ae6",
+      });
+    expect(response.statusCode).to.equal(400);
+    expect(response.body).to.eql({
+      message: "Warning, Please complete your profile before submit the job.",
+      success: false,
+    });
   });
 });
