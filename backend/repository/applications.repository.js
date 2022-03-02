@@ -1,7 +1,7 @@
 const { Application } = require("../models/applications.model");
 const { ObjectId } = require("mongoose").Types;
 
-const getApplications = ({ status, userId }) => {
+const findAllApplications = ({ status, userId }) => {
   return Application.find({
     $or: [
       {
@@ -20,5 +20,5 @@ const getApplications = ({ status, userId }) => {
 };
 
 module.exports = {
-  getApplications,
+  findAllApplications,
 };

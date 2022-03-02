@@ -2,7 +2,9 @@ const { expect } = require("chai");
 const mongoose = require("mongoose");
 const mongoUnit = require("mongo-unit");
 
-const { getApplications } = require("../../repository/applications.repository");
+const {
+  findAllApplications,
+} = require("../../repository/applications.repository");
 const mockData = require("../__mock__/data");
 
 describe("apps", () => {
@@ -11,7 +13,7 @@ describe("apps", () => {
   afterEach(() => mongoUnit.drop());
 
   it(`should find applications`, () => {
-    return getApplications({
+    return findAllApplications({
       status: "hired",
       userId: "620948092ad991e73d2f6012",
     }).then((apps) => {

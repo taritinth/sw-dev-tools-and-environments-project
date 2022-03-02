@@ -1,6 +1,6 @@
 const { Job } = require("../models/jobs.model");
 
-const getJobs = ({ title, type }) => {
+const findAllJobs = ({ title, type }) => {
   return Job.find({
     $or: [
       {
@@ -14,5 +14,5 @@ const getJobs = ({ title, type }) => {
 };
 
 module.exports = {
-  getJobs,
+  findAllJobs,
 };

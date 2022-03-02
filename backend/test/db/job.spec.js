@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const mongoUnit = require("mongo-unit");
 
 const mockData = require("../__mock__/data");
-const { getJobs } = require("../../repository/jobs.repository");
+const { findAllJobs } = require("../../repository/jobs.repository");
 
 describe("jobs", () => {
   before(() => mongoose.connect(process.env.MONGO_TEST_URL));
@@ -11,7 +11,7 @@ describe("jobs", () => {
   afterEach(() => mongoUnit.drop());
 
   it(`should handle undefined query value`, () => {
-    return getJobs({
+    return findAllJobs({
       title: undefined,
       type: undefined,
     }).then((jobs) => {
@@ -20,7 +20,7 @@ describe("jobs", () => {
   });
 
   it(`should handle null query value`, () => {
-    return getJobs({
+    return findAllJobs({
       title: null,
       type: null,
     }).then((jobs) => {
@@ -29,7 +29,7 @@ describe("jobs", () => {
   });
 
   it(`should handle NaN query value`, () => {
-    return getJobs({
+    return findAllJobs({
       title: NaN,
       type: NaN,
     }).then((jobs) => {
@@ -38,7 +38,7 @@ describe("jobs", () => {
   });
 
   it("should find all jobs", () => {
-    return getJobs({
+    return findAllJobs({
       title: "",
       type: "",
     }).then((jobs) => {
@@ -47,7 +47,7 @@ describe("jobs", () => {
   });
 
   it(`should find only "internship" jobs`, () => {
-    return getJobs({
+    return findAllJobs({
       title: "",
       type: "internship",
     }).then((jobs) => {
@@ -56,7 +56,7 @@ describe("jobs", () => {
   });
 
   it(`should find only "parttime" jobs`, () => {
-    return getJobs({
+    return findAllJobs({
       title: "",
       type: "parttime",
     }).then((jobs) => {
@@ -65,7 +65,7 @@ describe("jobs", () => {
   });
 
   it(`should find only "fulltime" jobs`, () => {
-    return getJobs({
+    return findAllJobs({
       title: "",
       type: "fulltime",
     }).then((jobs) => {

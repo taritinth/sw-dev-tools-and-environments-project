@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const { Job } = require("../models/jobs.model");
-const { getJobs } = require("../repository/jobs.repository");
+const { findAllJobs } = require("../repository/jobs.repository");
 
 const getAllJobs = async (req, res) => {
   let { query, type } = req.query;
 
-  getJobs({
+  findAllJobs({
     title: query,
     type: type,
   })

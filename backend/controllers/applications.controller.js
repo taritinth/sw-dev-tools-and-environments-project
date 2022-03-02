@@ -3,12 +3,14 @@ const { Application } = require("../models/applications.model");
 const { Job } = require("../models/jobs.model");
 const { User } = require("../models/users.model");
 const { ObjectId } = require("mongoose").Types;
-const { getApplications } = require("../repository/applications.repository");
+const {
+  findAllApplications,
+} = require("../repository/applications.repository");
 
 const getAllApps = async (req, res) => {
   const { status } = req.query;
 
-  getApplications({
+  findAllApplications({
     status: status,
     userId: req.user.id,
   })
