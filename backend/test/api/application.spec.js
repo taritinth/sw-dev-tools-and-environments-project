@@ -41,6 +41,21 @@ describe("applications", () => {
     expect(response.statusCode).to.equal(401);
   });
 
+  it("should handle applicant send valid application", async () => {
+    const response = await request(app)
+      .post("/api/applications")
+      .set("Authorization", token.APPLICANT2)
+      .send({
+        job: "62091a6ea3f9106fed159b71",
+        company: "620919f7a3f9106fed159b50",
+      });
+    expect(response.statusCode).to.equal(200);
+    expect(response.body).to.eql({
+      message: "Successfully, Your application has been sent to company",
+      success: true,
+    });
+  });
+
   it("should handle applicant send duplicate application", async () => {
     const response = await request(app)
       .post("/api/applications")
