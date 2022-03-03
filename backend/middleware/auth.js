@@ -19,7 +19,6 @@ const isAuth = async (req, res, next) => {
       });
     }
     req.user = user;
-    console.log("isAuth: ", req.user);
     return next();
   });
 };
@@ -29,11 +28,9 @@ const isOwner = async (req, res, next) => {
   User.findById(userId)
     .then((user) => {
       if (req.user.id == userId) {
-        console.log(`isOwner: checked`);
         return next();
       }
-      console.log("isOwner : false");
-      res.status("401").json("UNAUTHORIZED : isOwner => false");
+      res.status(401).send("Unauthorized");
     })
     .catch((err) => {
       console.log(err);
