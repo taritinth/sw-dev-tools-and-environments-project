@@ -22,19 +22,20 @@ app.use(router);
 
 console.log("NODE_ENV=", process.env.NODE_ENV);
 
-let connectDB;
-if (process.env.NODE_ENV !== "test") {
-  connectDB = connectRealDB();
-} else {
+if (process.env.NODE_ENV === "test") {
   if (process.env.TEST_ENV === "e2e") {
-    connectDB = connectMockDB();
+    connectMockDB().then(() => {
+      app.listen(PORT, () => {
+        console.log(`Mock Server is running at http://localhost:${PORT}`);
+      });
+    });
   }
-}
-
-connectDB.then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server is running at http://localhost:${PORT}`);
+} else {
+  connectRealDB().then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running at http://localhost:${PORT}`);
+    });
   });
-});
+}
 
 module.exports = app;
