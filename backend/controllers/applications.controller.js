@@ -1,8 +1,7 @@
-const mongoose = require("mongoose");
 const { Application } = require("../models/applications.model");
 const { Job } = require("../models/jobs.model");
 const { User } = require("../models/users.model");
-const { ObjectId } = require("mongoose").Types;
+
 const {
   findAllApplications,
   findApplicationById,

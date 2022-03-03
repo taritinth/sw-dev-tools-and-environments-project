@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const { Job } = require("../models/jobs.model");
 const { findAllJobs } = require("../repository/jobs.repository");
 

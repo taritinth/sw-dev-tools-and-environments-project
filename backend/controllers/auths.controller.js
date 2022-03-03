@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const { User } = require("../models/users.model");
 const { generateToken } = require("../helper");
+
 const authLogin = async (req, res, next) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email: email });
@@ -57,7 +57,7 @@ const authMe = async (req, res) => {
       success: false,
     });
   }
-  console.log("authMe: ", req.user);
+  // console.log("authMe: ", req.user);
   return res.json({
     id: user._id,
     email: user.email,

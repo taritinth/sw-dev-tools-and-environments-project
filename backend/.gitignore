@@ -94,3 +94,6 @@ sw.*
 
 # jest
 .nuxt-build-jest
+
+# img temp file
+uploads
