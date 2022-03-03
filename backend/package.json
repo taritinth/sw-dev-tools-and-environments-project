@@ -7,8 +7,8 @@
     "start": "cross-env NODE_ENV=production node app.js",
     "test": "npm run test:db & npm run test:api",
     "test:e2e": "cross-env NODE_ENV=test TEST_ENV=e2e node app.js",
-    "test:api": "cross-env NODE_ENV=test nyc --reporter=text mocha test/api/**/*.spec.js --delay --no-timeout",
-    "test:db": "cross-env NODE_ENV=test nyc --reporter=text mocha test/db/**/*.spec.js --delay --no-timeout"
+    "test:api": "cross-env NODE_ENV=test nyc --reporter=text --reporter=html mocha test/api/**/*.spec.js --delay --no-timeout",
+    "test:db": "cross-env NODE_ENV=test nyc --reporter=text --reporter=html mocha test/db/**/*.spec.js --delay --no-timeout"
   },
   "license": "MIT",
   "dependencies": {

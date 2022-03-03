@@ -86,4 +86,38 @@ describe("applications", () => {
       success: false,
     });
   });
+
+  it("should handle update application status for owner company", async () => {
+    const response = await request(app)
+      .put("/api/applications/621f4e0ce634d23ac1bd7b3b")
+      .set("Authorization", token.EMPLOYER1)
+      .send({
+        status: "hired",
+      });
+    expect(response.statusCode).to.equal(200);
+    expect(response.body).to.eql({
+      message: "Successfully, Application has updated",
+      success: true,
+    });
+  });
+
+  it("should handle update application status for not owner company", async () => {
+    const response = await request(app)
+      .put("/api/applications/621f4e0ce634d23ac1bd7b3b")
+      .set("Authorization", token.EMPLOYER2)
+      .send({
+        status: "hired",
+      });
+    expect(response.statusCode).to.equal(401);
+  });
+
+  it("should handle update application with invalid application id", async () => {
+    const response = await request(app)
+      .put("/api/applications/_id")
+      .set("Authorization", token.EMPLOYER1)
+      .send({
+        status: "hired",
+      });
+    expect(response.statusCode).to.equal(400);
+  });
 });
