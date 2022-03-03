@@ -15,13 +15,23 @@ const getAllApps = async (req, res) => {
   findAllApplications({
     status: status,
     userId: req.user.id,
-  }).then((apps) => res.json(apps));
+  })
+    .then((apps) => res.json(apps))
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 };
 
 const getApp = async (req, res) => {
   let { id } = req.params;
 
-  findApplicationById({ id }).then((apps) => res.json(apps));
+  findApplicationById({ id })
+    .then((apps) => res.json(apps))
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 };
 
 const addApp = async (req, res) => {
@@ -69,12 +79,18 @@ const addApp = async (req, res) => {
     user: userObj,
     company: companyObj,
   });
-  newApps.save().then(() =>
-    res.json({
-      message: "Successfully, Your application has been sent to company",
-      success: true,
-    })
-  );
+  newApps
+    .save()
+    .then(() =>
+      res.json({
+        message: "Successfully, Your application has been sent to company",
+        success: true,
+      })
+    )
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 };
 
 const updateApp = async (req, res) => {
@@ -83,12 +99,17 @@ const updateApp = async (req, res) => {
 
   //let result = await User.where({ _id: id }).updateOne({phone})
 
-  findAndUpdateApplication({ id, status }).then(() =>
-    res.json({
-      message: "Successfully, Application has updated",
-      success: true,
-    })
-  );
+  findAndUpdateApplication({ id, status })
+    .then(() =>
+      res.json({
+        message: "Successfully, Application has updated",
+        success: true,
+      })
+    )
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 };
 
 module.exports = { getAllApps, getApp, addApp, updateApp };

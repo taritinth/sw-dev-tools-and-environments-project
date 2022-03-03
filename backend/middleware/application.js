@@ -5,7 +5,7 @@ const isApplicationEmployer = async (req, res, next) => {
 
   Application.findById(id)
     .then((application) => {
-      if (req.user.id == application.companyId.toString()) {
+      if (req.user.id == application?.companyId.toString()) {
         return next();
       }
       res.status(401).send("Unauthorized");
@@ -21,7 +21,7 @@ const isApplicationOwner = async (req, res, next) => {
 
   Application.findById(id)
     .then((application) => {
-      if (req.user.id == application.userId.toString()) {
+      if (req.user.id == application?.userId.toString()) {
         return next();
       }
       res.status(401).send("Unauthorized");

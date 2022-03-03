@@ -13,7 +13,7 @@ const isJobEmployer = async (req, res, next) => {
 
   Job.findById(id)
     .then((job) => {
-      if (req.user.id == job.company.toString()) {
+      if (req.user.id == job?.company.toString()) {
         return next();
       }
       res.status(401).send("Unauthorized");

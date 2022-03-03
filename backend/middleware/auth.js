@@ -1,6 +1,5 @@
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
-const { User } = require("../models/users.model");
 const accessToken = process.env.JWT_SECRET;
 
 const isAuth = async (req, res, next) => {
@@ -23,19 +22,4 @@ const isAuth = async (req, res, next) => {
   });
 };
 
-const isOwner = async (req, res, next) => {
-  let userId = req.params.id;
-  User.findById(userId)
-    .then((user) => {
-      if (req.user.id == userId) {
-        return next();
-      }
-      res.status(401).send("Unauthorized");
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(400).json(err);
-    });
-};
-
-module.exports = { isAuth, isOwner };
+module.exports = { isAuth };
