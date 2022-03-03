@@ -6,8 +6,8 @@ module.exports = {
     {
       _id: new ObjectId("621f4e0ce634d23ac1bd7b3b"),
       job: {
-        _id: "62091a6ea3f9106fed159b71",
-        company: "620919f7a3f9106fed159b50",
+        _id: new ObjectId("62091a6ea3f9106fed159b71"),
+        company: new ObjectId("620919f7a3f9106fed159b50"),
         title: "UX Designer",
         overview: "We are looking for proficient with Meta technologies.",
         description:
@@ -21,7 +21,7 @@ module.exports = {
         __v: 0,
       },
       user: {
-        _id: "620948092ad991e73d2f6011",
+        _id: new ObjectId("620948092ad991e73d2f6011"),
         fullname: "Tarit Khanbo",
         email: "tarit@gmail.com",
         phone: "0987037324",
@@ -39,7 +39,7 @@ module.exports = {
           "https://jobjab-bucket-1.s3.ap-southeast-1.amazonaws.com/profile/620948092ad991e73d2f6011_1645863019943.webp",
       },
       company: {
-        _id: "620919f7a3f9106fed159b50",
+        _id: new ObjectId("620919f7a3f9106fed159b50"),
         fullname: "Meta",
         email: "meta@gmail.com",
         phone: "0801234567",
@@ -65,8 +65,8 @@ module.exports = {
     {
       _id: new ObjectId("621fa436e634d23ac1bd7b78"),
       job: {
-        _id: "62091985a3f9106fed159b31",
-        company: "62091715a3f9106fed159ae6",
+        _id: new ObjectId("62091985a3f9106fed159b31"),
+        company: new ObjectId("62091715a3f9106fed159ae6"),
         title: "Full Stack Developer",
         overview:
           "We are looking for Full Stack Developer with Excellent understanding of object-oriented JavaScript, TypeScript",
@@ -81,7 +81,7 @@ module.exports = {
         __v: 0,
       },
       user: {
-        _id: "621fa3d7e634d23ac1bd7b45",
+        _id: new ObjectId("621fa3d7e634d23ac1bd7b45"),
         fullname: "Tester Applicant",
         email: "tester.applicant@gmail.com",
         phone: "099999999",
@@ -99,7 +99,7 @@ module.exports = {
           "https://jobjab-bucket-1.s3.ap-southeast-1.amazonaws.com/resume/621fa3d7e634d23ac1bd7b45_1646240811520.pdf",
       },
       company: {
-        _id: "62091715a3f9106fed159ae6",
+        _id: new ObjectId("62091715a3f9106fed159ae6"),
         fullname: "Agoda",
         email: "agoda@gmail.com",
         phone: "021234567",
@@ -125,9 +125,9 @@ module.exports = {
   ],
   jobs: [
     {
-      _id: "62091a6ea3f9106fed159b71",
+      _id: new ObjectId("62091a6ea3f9106fed159b71"),
       company: {
-        _id: "620919f7a3f9106fed159b50",
+        _id: new ObjectId("620919f7a3f9106fed159b50"),
         fullname: "Meta",
         email: "meta@gmail.com",
         phone: "0801234567",
@@ -155,9 +155,9 @@ module.exports = {
       __v: 0,
     },
     {
-      _id: "62091985a3f9106fed159b31",
+      _id: new ObjectId("62091985a3f9106fed159b31"),
       company: {
-        _id: "62091715a3f9106fed159ae6",
+        _id: new ObjectId("62091715a3f9106fed159ae6"),
         fullname: "Agoda",
         email: "agoda@gmail.com",
         phone: "021234567",
@@ -186,9 +186,9 @@ module.exports = {
       __v: 0,
     },
     {
-      _id: "620917d3a3f9106fed159b0c",
+      _id: new ObjectId("620917d3a3f9106fed159b0c"),
       company: {
-        _id: "62091695a3f9106fed159ad6",
+        _id: new ObjectId("62091695a3f9106fed159ad6"),
         fullname: "Slack",
         email: "slack@gmail.com",
         phone: "0801234567",
