@@ -116,6 +116,7 @@
   </div>
 </template>
 
+
 <script>
 import AnnouncementsList from '../components/AnnouncementsList.vue'
 export default {
