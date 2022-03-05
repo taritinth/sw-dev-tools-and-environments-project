@@ -20,8 +20,13 @@
         </div>
     </div> -->
     <div class="pt-8">
-      <h1 class="mb-5 text-2xl text-gray-800 dark:text-gray-500" data-test="title">Profile</h1>
-
+      <h1
+        class="mb-5 text-2xl text-gray-800 dark:text-gray-500"
+        data-test="title"
+      >
+        Profile
+      </h1>
+      {{ $v }}
       <form v-if="user" method="put" @submit.prevent="submitForm">
         <div
           class="flex p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800"
@@ -108,7 +113,6 @@
             </label>
           </div>
         </div>
-
         <div class="w-full">
           <div class="mb-6">
             <label
@@ -284,7 +288,9 @@
           v-if="$auth.loggedIn && $auth.user.type == 'user'"
           class="w-full mb-5"
         >
-          <label data-test="resume-label" class="block mb-2 text-sm font-medium text-gray-900"
+          <label
+            data-test="resume-label"
+            class="block mb-2 text-sm font-medium text-gray-900"
             >Resume<span class="text-red-400">*</span></label
           >
           <a
@@ -379,7 +385,7 @@ import { axios } from '@/plugins/axios'
 import { required, minValue, maxLength } from 'vuelidate/lib/validators'
 
 export default {
-  name: "ProfilePage",
+  name: 'ProfilePage',
   middleware: ['auth'],
   layout: 'dashboard',
   data() {
@@ -424,7 +430,7 @@ export default {
         this.loading = true
 
         const response = await axios.get(
-          `/api/users/${this.$nuxt.$auth.user.id}`
+          `http://localhost:8080/api/users/${this.$nuxt.$auth.user.id}`
         )
         console.log(response)
 

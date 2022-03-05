@@ -12,6 +12,7 @@
     "lint": "yarn lint:js && yarn lint:prettier",
     "lintfix": "prettier --write --list-different . && yarn lint:js --fix",
     "test": "jest",
+    "test:utils": "jest test/utils --coverage",
     "test:unit": "jest test/unit",
     "test:unit-dev": "jest test/unit-dev",
     "test:e2e": "jest test/e2e",
