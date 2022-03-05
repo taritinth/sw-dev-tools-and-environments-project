@@ -3,25 +3,21 @@ import { axios } from '@/plugins/axios'
 import SearchPage from '@/pages/search/index.vue'
 import MockAdapter from 'axios-mock-adapter'
 import flushPromises from 'flush-promises'
+const $router = {
+  push: jest.fn(),
+}
+const $route = {
+  query: {
+    query: '',
+    type: '',
+  },
+}
+const $toast = {
+  error: jest.fn(),
+}
 
 describe('UserService', () => {
   let mockAxios
-
-  const $router = {
-    push: jest.fn(),
-  }
-
-  const $route = {
-    query: {
-      query: '',
-      type: '',
-    },
-  }
-
-  const $toast = {
-    error: jest.fn(),
-  }
-
   beforeEach(() => {
     mockAxios = new MockAdapter(axios)
   })
@@ -37,7 +33,6 @@ describe('UserService', () => {
     expect(title).toEqual('Search')
   })
 
-  // Test Case No.2
   test('Should render 1 box of input', async () => {
     const wrapper = mount(SearchPage, {
       mocks: {
@@ -50,7 +45,6 @@ describe('UserService', () => {
     expect(inputBox).toHaveLength(1)
   })
 
-  // Test Case No.3
   test('Should render Search title', () => {
     const wrapper = mount(SearchPage, {
       mocks: {
@@ -63,7 +57,6 @@ describe('UserService', () => {
     expect(title).toEqual('Search')
   })
 
-  // Test Case No.4
   test('Should render 1 box of input', async () => {
     const wrapper = mount(SearchPage, {
       mocks: {
@@ -75,6 +68,7 @@ describe('UserService', () => {
     const inputBox = wrapper.findAll('[data-test="search-input"]')
     expect(inputBox).toHaveLength(1)
   })
+  
   test('should load and display 3 jobs', async () => {
     mockAxios.onGet('/api/jobs?query=&type=').reply(200, [
       {
@@ -181,6 +175,5 @@ describe('UserService', () => {
 
     const jobs = wrapper.findAll('[data-test="job"]')
     expect(jobs).toHaveLength(3)
-    // expect(wrapper.vm.jobs.length).toBe(3)
   })
 })

@@ -1,21 +1,14 @@
-import { mount, createLocalVue, shallowMount } from '@vue/test-utils'
-import Vuex from 'vuex'
+import { mount, shallowMount } from '@vue/test-utils'
 import Home from '@/pages/index.vue'
-import VueRouter from 'vue-router'
-const localVue = createLocalVue()
-localVue.use(Vuex)
-localVue.use(VueRouter)
+
 const $router = {
   push: jest.fn(),
 }
 describe('IndexPage', () => {
-  let store
   let authMock
   let authMock2
 
   beforeEach(() => {
-    // store = new Vuex.Store(cloneDeep({ state: { auth: { loggedIn: false } } }))
-    // store = new Vuex.Store(cloneDeep({ state: { v: { email: 'test@test' } } }))
     authMock = {
       user: {
         type: 'user',
@@ -32,7 +25,6 @@ describe('IndexPage', () => {
     }
   })
 
-  // Test Case No.1
   test('Should render Home title', () => {
     const wrapper = mount(Home, {
       mocks: {
@@ -43,7 +35,6 @@ describe('IndexPage', () => {
     expect(title).toEqual('Home')
   })
 
-  // Test Case No.2
   test('Should be render Search for Internship', () => {
     const wrapper = mount(Home, {
       mocks: {
@@ -54,7 +45,6 @@ describe('IndexPage', () => {
     expect(intern).toEqual('Search for Internships')
   })
 
-  // Test Case No.3
   test('Should be render Search for Full-time jobs', () => {
     const wrapper = mount(Home, {
       mocks: {
@@ -65,7 +55,6 @@ describe('IndexPage', () => {
     expect(fullTime).toEqual('Search for Full-time jobs')
   })
 
-  // Test Case No.4
   test('Should be render Search for Part-time jobs', () => {
     const wrapper = mount(Home, {
       mocks: {
@@ -76,7 +65,6 @@ describe('IndexPage', () => {
     expect(partTime).toEqual('Search for Part-time jobs')
   })
 
-  // Test Case No.5
   test('Should render 3 buttons', () => {
     const wrapper = mount(Home, {
       mocks: {
@@ -86,7 +74,7 @@ describe('IndexPage', () => {
     const button = wrapper.findAll('button')
     expect(button).toHaveLength(3)
   })
-  // Test Case No.6
+
   test('If no user authentications', async () => {
     const wrapper = mount(Home, {
       mocks: {
@@ -97,7 +85,6 @@ describe('IndexPage', () => {
     console.log(wrapper.vm.$auth.loggedIn)
   })
 
-  // Test Case No.7
   test('Click to explore an internship page', async () => {
     const wrapper = shallowMount(Home, {
       mocks: {
@@ -113,7 +100,6 @@ describe('IndexPage', () => {
     })
   })
 
-  // Test Case No.8
   test('Click to explore an Full-Time page', async () => {
     const wrapper = shallowMount(Home, {
       mocks: {
@@ -129,7 +115,6 @@ describe('IndexPage', () => {
     })
   })
 
-  // Test Case No.9
   test('Click to explore an Part-Time page', async () => {
     const wrapper = shallowMount(Home, {
       mocks: {
@@ -157,7 +142,6 @@ describe('IndexPage', () => {
     expect(title).toEqual('Home')
   })
 
-  // Test Case No.2
   test('Should be render Search for Internship', () => {
     const wrapper = mount(Home, {
       mocks: {
@@ -168,7 +152,6 @@ describe('IndexPage', () => {
     expect(intern).toEqual('Search for Internships')
   })
 
-  // Test Case No.3
   test('Should be render Search for Full-time jobs', () => {
     const wrapper = mount(Home, {
       mocks: {
@@ -179,7 +162,6 @@ describe('IndexPage', () => {
     expect(fullTime).toEqual('Search for Full-time jobs')
   })
 
-  // Test Case No.4
   test('Should be render Search for Part-time jobs', () => {
     const wrapper = mount(Home, {
       mocks: {
@@ -190,7 +172,6 @@ describe('IndexPage', () => {
     expect(partTime).toEqual('Search for Part-time jobs')
   })
 
-  // Test Case No.5
   test('Should render 3 buttons', () => {
     const wrapper = mount(Home, {
       mocks: {
@@ -200,7 +181,7 @@ describe('IndexPage', () => {
     const button = wrapper.findAll('button')
     expect(button).toHaveLength(3)
   })
-  // Test Case No.6
+
   test('If no user authentications', async () => {
     const wrapper = mount(Home, {
       mocks: {
@@ -211,7 +192,6 @@ describe('IndexPage', () => {
     console.log(wrapper.vm.$auth.loggedIn)
   })
 
-  // Test Case No.7
   test('Click to explore an internship page', async () => {
     const wrapper = shallowMount(Home, {
       mocks: {
@@ -227,7 +207,6 @@ describe('IndexPage', () => {
     })
   })
 
-  // Test Case No.8
   test('Click to explore an Full-Time page', async () => {
     const wrapper = shallowMount(Home, {
       mocks: {
@@ -243,7 +222,6 @@ describe('IndexPage', () => {
     })
   })
 
-  // Test Case No.9
   test('Click to explore an Part-Time page', async () => {
     const wrapper = shallowMount(Home, {
       mocks: {

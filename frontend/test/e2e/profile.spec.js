@@ -1,5 +1,5 @@
 import { createPage, setupTest } from '@nuxt/test-utils'
-import { test, expect } from '@playwright/test'
+import { expect } from '@playwright/test'
 
 describe('browser', () => {
   setupTest({ browser: true })

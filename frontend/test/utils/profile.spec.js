@@ -171,7 +171,6 @@ describe('ProfilePage', () => {
     mockAxios = new MockAdapter(axios)
   })
 
-  // Test Case No.1
   test('Should render Profile title', () => {
     const wrapper = shallowMount(ProfilePage, {
       mocks: {
@@ -289,8 +288,6 @@ describe('ProfilePage', () => {
     expect(phoneLabel).toEqual('Phone*')
   })
 
-      
-
   test('Should render Education label', async () => {
     mockAxios.onGet('/api/users/620948092ad991e73d2f6011').reply(200, data)
 
@@ -330,6 +327,7 @@ describe('ProfilePage', () => {
     const resumeLabel = wrapper.find('[data-test="resume-label"]').text()
     expect(resumeLabel).toEqual('Resume*')
   })
+
   test('Should render Resume label', async () => {
     mockAxios.onGet('/api/users/620948092ad991e73d2f6011').reply(200, data)
 
