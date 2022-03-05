@@ -26,7 +26,6 @@
       >
         Profile
       </h1>
-      {{ $v }}
       <form v-if="user" method="put" @submit.prevent="submitForm">
         <div
           class="flex p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800"
@@ -430,7 +429,7 @@ export default {
         this.loading = true
 
         const response = await axios.get(
-          `http://localhost:8080/api/users/${this.$nuxt.$auth.user.id}`
+          `/api/users/${this.$nuxt.$auth.user.id}`
         )
         console.log(response)
 

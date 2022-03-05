@@ -22,7 +22,7 @@ describe('browser', () => {
         $auth,
       },
     })
-    const buttonIntern = wrapper.find('#exploreInternship')
+    const buttonIntern = wrapper.find('[data-test="internship"]')
 
     buttonIntern.trigger('click')
 

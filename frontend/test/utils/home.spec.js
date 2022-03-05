@@ -39,7 +39,7 @@ describe('IndexPage', () => {
         $auth: authMock,
       },
     })
-    const title = wrapper.find('#title').text()
+    const title = wrapper.find('[data-test="title"]').text()
     expect(title).toEqual('Home')
   })
 
@@ -50,7 +50,7 @@ describe('IndexPage', () => {
         $auth: authMock,
       },
     })
-    const intern = wrapper.find('#internship').text()
+    const intern = wrapper.find('[data-test="internship"]').text()
     expect(intern).toEqual('Search for Internships')
   })
 
@@ -61,8 +61,8 @@ describe('IndexPage', () => {
         $auth: authMock,
       },
     })
-    const intern = wrapper.find('#fullTime').text()
-    expect(intern).toEqual('Search for Full-time jobs')
+    const fullTime = wrapper.find('[data-test="full-time"]').text()
+    expect(fullTime).toEqual('Search for Full-time jobs')
   })
 
   // Test Case No.4
@@ -72,8 +72,8 @@ describe('IndexPage', () => {
         $auth: authMock,
       },
     })
-    const intern = wrapper.find('#partTime').text()
-    expect(intern).toEqual('Search for Part-time jobs')
+    const partTime = wrapper.find('[data-test="part-time"]').text()
+    expect(partTime).toEqual('Search for Part-time jobs')
   })
 
   // Test Case No.5
@@ -105,7 +105,7 @@ describe('IndexPage', () => {
         $auth: authMock,
       },
     })
-    const buttonIntern = wrapper.get('[data-test="buttonIntern"]')
+    const buttonIntern = wrapper.get('[data-test="button-of-intern"]')
     buttonIntern.trigger('click')
     expect($router.push).toHaveBeenCalledWith({
       path: '/search',
@@ -121,7 +121,7 @@ describe('IndexPage', () => {
         $auth: authMock,
       },
     })
-    const buttonFull = wrapper.get('[data-test="buttonFull"]')
+    const buttonFull = wrapper.get('[data-test="button-of-fulltime"]')
     buttonFull.trigger('click')
     expect($router.push).toHaveBeenCalledWith({
       path: '/search',
@@ -137,7 +137,7 @@ describe('IndexPage', () => {
         $auth: authMock,
       },
     })
-    const buttonPart = wrapper.get('[data-test="buttonPart"]')
+    const buttonPart = wrapper.get('[data-test="button-of-parttime"]')
 
     buttonPart.trigger('click')
 
@@ -153,7 +153,7 @@ describe('IndexPage', () => {
         $auth: authMock2,
       },
     })
-    const title = wrapper.find('#title').text()
+    const title = wrapper.find('[data-test="title"]').text()
     expect(title).toEqual('Home')
   })
 
@@ -164,7 +164,7 @@ describe('IndexPage', () => {
         $auth: authMock2,
       },
     })
-    const intern = wrapper.find('#internship').text()
+    const intern = wrapper.find('[data-test="internship"]').text()
     expect(intern).toEqual('Search for Internships')
   })
 
@@ -175,8 +175,8 @@ describe('IndexPage', () => {
         $auth: authMock2,
       },
     })
-    const intern = wrapper.find('#fullTime').text()
-    expect(intern).toEqual('Search for Full-time jobs')
+    const fullTime = wrapper.find('[data-test="full-time"]').text()
+    expect(fullTime).toEqual('Search for Full-time jobs')
   })
 
   // Test Case No.4
@@ -186,8 +186,8 @@ describe('IndexPage', () => {
         $auth: authMock2,
       },
     })
-    const intern = wrapper.find('#partTime').text()
-    expect(intern).toEqual('Search for Part-time jobs')
+    const partTime = wrapper.find('[data-test="part-time"]').text()
+    expect(partTime).toEqual('Search for Part-time jobs')
   })
 
   // Test Case No.5
@@ -219,7 +219,7 @@ describe('IndexPage', () => {
         $auth: authMock2,
       },
     })
-    const buttonIntern = wrapper.get('[data-test="buttonIntern"]')
+    const buttonIntern = wrapper.get('[data-test="button-of-intern"]')
     buttonIntern.trigger('click')
     expect($router.push).toHaveBeenCalledWith({
       path: '/search',
@@ -235,7 +235,7 @@ describe('IndexPage', () => {
         $auth: authMock2,
       },
     })
-    const buttonFull = wrapper.get('[data-test="buttonFull"]')
+    const buttonFull = wrapper.get('[data-test="button-of-fulltime"]')
     buttonFull.trigger('click')
     expect($router.push).toHaveBeenCalledWith({
       path: '/search',
@@ -251,7 +251,7 @@ describe('IndexPage', () => {
         $auth: authMock2,
       },
     })
-    const buttonPart = wrapper.get('[data-test="buttonPart"]')
+    const buttonPart = wrapper.get('[data-test="button-of-parttime"]')
 
     buttonPart.trigger('click')
 

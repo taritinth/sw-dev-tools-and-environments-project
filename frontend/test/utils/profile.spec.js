@@ -1,10 +1,26 @@
-import { mount, createLocalVue, shallowMount } from '@vue/test-utils'
-import Vuex from 'vuex'
+import { mount, shallowMount } from '@vue/test-utils'
 import ProfilePage from '@/pages/profile/index.vue'
-import VueRouter from 'vue-router'
-const localVue = createLocalVue()
-localVue.use(Vuex)
-localVue.use(VueRouter)
+import { axios } from '@/plugins/axios'
+import MockAdapter from 'axios-mock-adapter'
+import flushPromises from 'flush-promises'
+const data = {
+  _id: '620948092ad991e73d2f6011',
+  fullname: 'Tarit Khanbo',
+  email: 'tarit@gmail.com',
+  phone: '0987037324',
+  type: 'user',
+  website: '',
+  position: '',
+  education: '',
+  jobType: '',
+  createdAt: '2022-02-13T18:03:53.124Z',
+  updatedAt: '2022-03-04T13:05:46.651Z',
+  __v: 0,
+  resumeFile:
+    'https://jobjab-bucket-1.s3.ap-southeast-1.amazonaws.com/resume/620948092ad991e73d2f6011_1644775477205.pdf',
+  profileImg:
+    'https://jobjab-bucket-1.s3.amazonaws.com/profile/620948092ad991e73d2f6011_1646309013685.webp',
+}
 const $router = {
   push: jest.fn(),
 }
@@ -18,52 +34,168 @@ const $route = {
 const $toast = {
   error: jest.fn(),
 }
-// const factory = (vuetify) =>
-//   mount(ProfilePage, {
-//     vuetify,
-//   })
+
+const $auth = {
+  loggedIn: true,
+  user: {
+    id: '620948092ad991e73d2f6011',
+    type: 'user',
+  },
+}
+
+const $v = {
+  user: {
+    fullname: {
+      required: true,
+      $model: 'Tarit Khanbo',
+      $invalid: false,
+      $dirty: false,
+      $anyDirty: false,
+      $error: false,
+      $anyError: false,
+      $pending: false,
+      $params: { required: { type: 'required' } },
+    },
+    email: {
+      $model: 'tarit@gmail.com',
+      $invalid: false,
+      $dirty: false,
+      $anyDirty: false,
+      $error: false,
+      $anyError: false,
+      $pending: false,
+      $params: {},
+    },
+    phone: {
+      required: true,
+      maxLength: true,
+      $model: '0987037324',
+      $invalid: false,
+      $dirty: false,
+      $anyDirty: false,
+      $error: false,
+      $anyError: false,
+      $pending: false,
+      $params: {
+        required: { type: 'required' },
+        maxLength: { type: 'maxLength', max: 12 },
+      },
+    },
+    education: {
+      $model: '',
+      $invalid: false,
+      $dirty: false,
+      $anyDirty: false,
+      $error: false,
+      $anyError: false,
+      $pending: false,
+      $params: {},
+    },
+    position: {
+      $model: '',
+      $invalid: false,
+      $dirty: false,
+      $anyDirty: false,
+      $error: false,
+      $anyError: false,
+      $pending: false,
+      $params: {},
+    },
+    jobType: {
+      $model: '',
+      $invalid: false,
+      $dirty: false,
+      $anyDirty: false,
+      $error: false,
+      $anyError: false,
+      $pending: false,
+      $params: {},
+    },
+    $model: {
+      _id: '620948092ad991e73d2f6011',
+      fullname: 'Tarit Khanbo',
+      email: 'tarit@gmail.com',
+      phone: '0987037324',
+      type: 'user',
+      website: '',
+      position: '',
+      education: '',
+      jobType: '',
+      createdAt: '2022-02-13T18:03:53.124Z',
+      updatedAt: '2022-03-04T13:05:46.651Z',
+      __v: 0,
+      resumeFile:
+        'https://jobjab-bucket-1.s3.ap-southeast-1.amazonaws.com/resume/620948092ad991e73d2f6011_1644775477205.pdf',
+      profileImg:
+        'https://jobjab-bucket-1.s3.amazonaws.com/profile/620948092ad991e73d2f6011_1646309013685.webp',
+    },
+    $invalid: false,
+    $dirty: false,
+    $anyDirty: false,
+    $error: false,
+    $anyError: false,
+    $pending: false,
+    $params: {
+      fullname: null,
+      email: null,
+      phone: null,
+      education: null,
+      position: null,
+      jobType: null,
+    },
+  },
+  resume: {
+    $model: null,
+    $invalid: false,
+    $dirty: false,
+    $anyDirty: false,
+    $error: false,
+    $anyError: false,
+    $pending: false,
+    $params: {},
+  },
+  $model: null,
+  $invalid: false,
+  $dirty: false,
+  $anyDirty: false,
+  $error: false,
+  $anyError: false,
+  $pending: false,
+  $params: { user: null, resume: null },
+}
+
 describe('ProfilePage', () => {
-  let store
-  let authMock
-  let authMock2
+  let mockAxios
 
   beforeEach(() => {
-    // store = new Vuex.Store(cloneDeep({ state: { auth: { loggedIn: false } } }))
-    // store = new Vuex.Store(cloneDeep({ state: { v: { email: 'test@test' } } }))
-    authMock = {
-      user: {
-        type: 'user',
-      },
-      loggedIn: false,
-      strategy: 'local',
-    }
-    authMock2 = {
-      user: {
-        type: 'user',
-      },
-      loggedIn: true,
-      strategy: 'local',
-    }
+    mockAxios = new MockAdapter(axios)
   })
 
   // Test Case No.1
   test('Should render Profile title', () => {
-    const wrapper = mount(ProfilePage, {
+    const wrapper = shallowMount(ProfilePage, {
       mocks: {
-        $auth: authMock,
+        $v,
+        $nuxt: {
+          $auth,
+        },
+        $auth,
         $router,
         $route,
         $toast,
       },
     })
-    const title = wrapper.find('[data-test="title"]').text()
-    expect(title).toEqual('Profile')
+    const title = wrapper.find('[data-test="title"]')
+    expect(title.text()).toEqual('Profile')
   })
-
+  
   test('Email input should be disabled', () => {
-    const wrapper = mount(ProfilePage, {
+    const wrapper = shallowMount(ProfilePage, {
       mocks: {
-        $auth: authMock,
+        $nuxt:{
+          $auth
+        },
+        $auth,
         $router,
         $route,
         $toast,
@@ -73,84 +205,148 @@ describe('ProfilePage', () => {
     expect(emailInput.attributes.disabled).toBeUndefined()
   })
 
-  //   test('Should render Fullname label', () => {
-  //     const wrapper = mount(ProfilePage, {
-  //       mocks: {
-  //         $auth: authMock,
-  //         $router,
-  //         $route,
-  //         $toast,
-  //       },
-  //     })
-  //     const fullnameLabel = wrapper.find('label')
-  //     expect(fullnameLabel).toEqual('Fullname')
-  //   })
+  test('Should render Profile title', async () => {
+    mockAxios.onGet('/api/users/620948092ad991e73d2f6011').reply(200, data)
 
-  //   test('Should render Email label', () => {
-  //     const wrapper = mount(ProfilePage, {
-  //       mocks: {
-  //         $auth: authMock,
-  //         $router,
-  //         $route,
-  //         $toast,
-  //       },
-  //     })
-  //     const emailLabel = wrapper.find('label[data-test="email-label"]')
-  //     expect(emailLabel).toEqual('Email')
-  //   })
+    const wrapper = shallowMount(ProfilePage, {
+      mocks: {
+        $v,
+        $nuxt: {
+          $auth,
+        },
+        $auth,
+        $router,
+        $route,
+        $toast,
+      },
+    })
 
-  //   test('Should render Phone label', () => {
-  //     const wrapper = mount(ProfilePage, {
-  //       mocks: {
-  //         $auth: authMock,
-  //         $router,
-  //         $route,
-  //         $toast,
-  //       },
-  //     })
-  //     const phoneLabel = wrapper.find('label[data-test="phone-label"]').text()
-  //     expect(phoneLabel).toEqual('Phone')
-  //   })
+    await flushPromises()
 
-  //   test('Should render Phone label', () => {
-  //     const wrapper = mount(ProfilePage, {
-  //       mocks: {
-  //         $auth: authMock,
-  //         $router,
-  //         $route,
-  //         $toast,
-  //       },
-  //     })
-  //     const phoneLabel = wrapper.find('label[data-test="phone-label"]')
-  //     expect(phoneLabel).toEqual('Phone')
-  //   })
+    const emailInput = wrapper.find('[data-test="email-input"]')
+    expect(emailInput.element.value).toEqual('tarit@gmail.com')
+  })
+  test('Should render Fullname label', async () => {
+    mockAxios.onGet('/api/users/620948092ad991e73d2f6011').reply(200, data)
 
-  //   test('Should render Resume label', () => {
-  //     const wrapper = mount(ProfilePage, {
-  //       mocks: {
-  //         $auth: authMock,
-  //         $router,
-  //         $route,
-  //         $toast,
-  //       },
-  //     })
-  //     const resumeLabel = wrapper.find('label[data-test="resume-label"]')
-  //     expect(resumeLabel).toEqual('Resume')
-  //   })
+    const wrapper = shallowMount(ProfilePage, {
+      mocks: {
+        $v,
+        $nuxt: {
+          $auth,
+        },
+        $auth,
+        $router,
+        $route,
+        $toast,
+      },
+    })
 
-  //   test('trigger', async () => {
-  //     const wrapper = mount(ProfilePage, {
-  //       mocks: {
-  //         $auth: authMock,
-  //         $router,
-  //         $route,
-  //         $toast,
-  //       },
-  //     })
-  //     // trigger the element
-  //     await wrapper.find('[data-test="save-button"]').trigger('click')
+    await flushPromises()
+      const fullnameLabel = wrapper.get('[data-test="fullname-label"]').text()
+      expect(fullnameLabel).toEqual('Fullname*')
+  })
 
-  //     // assert some action has been performed, like an emitted event.
-  //     expect(wrapper.emitted()).toHaveProperty('save')
-  //   })
+  test('Should render Email label', async () => {
+    mockAxios.onGet('/api/users/620948092ad991e73d2f6011').reply(200, data)
+
+    const wrapper = shallowMount(ProfilePage, {
+      mocks: {
+        $v,
+        $nuxt: {
+          $auth,
+        },
+        $auth,
+        $router,
+        $route,
+        $toast,
+      },
+    })
+
+    await flushPromises()
+      const emailLabel = wrapper.get('[data-test="email-label"]').text()
+      console.log(emailLabel)
+      expect(emailLabel).toEqual('Email*')
+  })
+  
+  test('Should render Phone label', async () => {
+    mockAxios.onGet('/api/users/620948092ad991e73d2f6011').reply(200, data)
+
+    const wrapper = shallowMount(ProfilePage, {
+      mocks: {
+        $v,
+        $nuxt: {
+          $auth,
+        },
+        $auth,
+        $router,
+        $route,
+        $toast,
+      },
+    })
+    await flushPromises()
+    const phoneLabel = wrapper.find('[data-test="phone-label"]').text()
+    expect(phoneLabel).toEqual('Phone*')
+  })
+
+      
+
+  test('Should render Education label', async () => {
+    mockAxios.onGet('/api/users/620948092ad991e73d2f6011').reply(200, data)
+
+    const wrapper = shallowMount(ProfilePage, {
+      mocks: {
+        $v,
+        $nuxt: {
+          $auth,
+        },
+        $auth,
+        $router,
+        $route,
+        $toast,
+      },
+    })
+    await flushPromises()
+    const educationLabel = wrapper.find('[data-test="education-label"]').text()
+    expect(educationLabel).toEqual('Education')
+  })
+  
+  test('Should render Resume label', async () => {
+    mockAxios.onGet('/api/users/620948092ad991e73d2f6011').reply(200, data)
+
+    const wrapper = shallowMount(ProfilePage, {
+      mocks: {
+        $v,
+        $nuxt: {
+          $auth,
+        },
+        $auth,
+        $router,
+        $route,
+        $toast,
+      },
+    })
+    await flushPromises()
+    const resumeLabel = wrapper.find('[data-test="resume-label"]').text()
+    expect(resumeLabel).toEqual('Resume*')
+  })
+  test('Should render Resume label', async () => {
+    mockAxios.onGet('/api/users/620948092ad991e73d2f6011').reply(200, data)
+
+    const wrapper = shallowMount(ProfilePage, {
+      mocks: {
+        $v,
+        $nuxt: {
+          $auth,
+        },
+        $auth,
+        $router,
+        $route,
+        $toast,
+      },
+    })
+    await flushPromises()
+    const button = wrapper.findAll('button')
+    expect(button).toHaveLength(1)
+  })
 })
