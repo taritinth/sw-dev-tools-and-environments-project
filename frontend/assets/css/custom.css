@@ -1,0 +1,63 @@
+body,
+button,
+input,
+optgroup,
+select,
+textarea,
+strong,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+em,
+span {
+  font-family: 'Prompt', sans-serif;
+}
+
+.bg-jobjab {
+  background-color: #fff;
+}
+.bg-my-movie-mood {
+  background-color: #131720;
+}
+.bg-review {
+  background-color: #151f30;
+}
+
+.bg-blue-pan {
+  background-color: #90c3f4;
+}
+
+.text-navbar {
+  color: #999cb9;
+}
+
+.shadow-1 {
+  box-shadow: 0px 3px 35px -8px rgba(0,0,0,0.1);
+}
+
+/* width */
+/* ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+} */
+
+/* Track */
+/* ::-webkit-scrollbar-track {
+  border-radius: 100vh;
+  background: #d7dae0;
+} */
+
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+  background: #dbe4f3;
+  border-radius: 100vh;
+} */
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
+  background: #c1cfe7;
+} */

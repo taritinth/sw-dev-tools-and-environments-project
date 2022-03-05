@@ -1,0 +1,38 @@
+[
+  {
+    "name": "applied",
+    "path": "/applied",
+    "component": "C:\\\\blabla\\\\sw-dev-tools-and-environments-project\\\\frontend\\\\pages\\\\applied\\\\index.vue",
+    "chunkName": "pages/applied/index"
+  },
+  {
+    "name": "profile",
+    "path": "/profile",
+    "component": "C:\\\\blabla\\\\sw-dev-tools-and-environments-project\\\\frontend\\\\pages\\\\profile\\\\index.vue",
+    "chunkName": "pages/profile/index"
+  },
+  {
+    "name": "search",
+    "path": "/search",
+    "component": "C:\\\\blabla\\\\sw-dev-tools-and-environments-project\\\\frontend\\\\pages\\\\search\\\\index.vue",
+    "chunkName": "pages/search/index"
+  },
+  {
+    "name": "signin",
+    "path": "/signin",
+    "component": "C:\\\\blabla\\\\sw-dev-tools-and-environments-project\\\\frontend\\\\pages\\\\signin.vue",
+    "chunkName": "pages/signin"
+  },
+  {
+    "name": "signup",
+    "path": "/signup",
+    "component": "C:\\\\blabla\\\\sw-dev-tools-and-environments-project\\\\frontend\\\\pages\\\\signup.vue",
+    "chunkName": "pages/signup"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\blabla\\\\sw-dev-tools-and-environments-project\\\\frontend\\\\pages\\\\index.vue",
+    "chunkName": "pages/index"
+  }
+]

@@ -88,3 +88,12 @@ sw.*
 
 # Vim swap files
 *.swp
+
+#.env
+.env
+
+# jest
+.nuxt-build-jest
+
+# img temp file
+uploads
