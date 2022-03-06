@@ -75,9 +75,9 @@
           class="flex flex-col items-start justify-between rounded-3xl h-80 bg-white p-8 shadow-1 cursor-pointer"
           data-test="job"
         >
-          <div class="block">
+          <div class="block" data-test="job-overview">
             <job-title :title="job.title" :company="job.company" />
-            <p class="text-base font-extralight text-gray-500 mt-4">
+            <p class="text-base font-extralight text-gray-500 mt-4" >
               {{ job.overview }}
             </p>
           </div>

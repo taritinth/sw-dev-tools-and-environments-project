@@ -124,6 +124,7 @@
               >Fullname<span class="text-red-400">*</span></label
             >
             <input
+            data-test="fullname-input"
               v-model="$v.user.fullname.$model"
               type="text"
               id="base-input"
@@ -231,6 +232,7 @@
             >
             <input
               v-model="$v.user.education.$model"
+              data-test="education-input"
               type="text"
               id="base-input"
               placeholder="University, School"

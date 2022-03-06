@@ -18,4 +18,5 @@ module.exports = {
   setupFiles: ['<rootDir>/node_modules/core-js'],
   testEnvironment: 'jsdom',
   preset: '@nuxt/test-utils',
+  testTimeout: 120000
 }

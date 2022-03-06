@@ -126,22 +126,7 @@ module.exports = {
   jobs: [
     {
       _id: new ObjectId("62091a6ea3f9106fed159b71"),
-      company: {
-        _id: new ObjectId("620919f7a3f9106fed159b50"),
-        fullname: "Meta",
-        email: "meta@gmail.com",
-        phone: "0801234567",
-        type: "company",
-        website: "",
-        position: "",
-        education: "",
-        jobType: "",
-        createdAt: "2022-02-13T14:47:19.582Z",
-        updatedAt: "2022-02-13T14:47:58.743Z",
-        __v: 0,
-        profileImg:
-          "https://jobjab-bucket-1.s3.ap-southeast-1.amazonaws.com/profile/620919f7a3f9106fed159b50_1644763678651.webp",
-      },
+      company: new ObjectId("620919f7a3f9106fed159b50"),
       title: "UX Designer",
       overview: "We are looking for proficient with Meta technologies.",
       description:
@@ -156,22 +141,7 @@ module.exports = {
     },
     {
       _id: new ObjectId("62091985a3f9106fed159b31"),
-      company: {
-        _id: new ObjectId("62091715a3f9106fed159ae6"),
-        fullname: "Agoda",
-        email: "agoda@gmail.com",
-        phone: "021234567",
-        type: "company",
-        website: "",
-        position: "",
-        education: "",
-        jobType: "",
-        createdAt: "2022-02-13T14:35:01.812Z",
-        updatedAt: "2022-02-13T18:02:15.863Z",
-        __v: 0,
-        profileImg:
-          "https://jobjab-bucket-1.s3.ap-southeast-1.amazonaws.com/profile/62091715a3f9106fed159ae6_1644763676651.webp",
-      },
+      company: new ObjectId("62091715a3f9106fed159ae6"),
       title: "Full Stack Developer",
       overview:
         "We are looking for Full Stack Developer with Excellent understanding of object-oriented JavaScript, TypeScript",
@@ -187,22 +157,7 @@ module.exports = {
     },
     {
       _id: new ObjectId("620917d3a3f9106fed159b0c"),
-      company: {
-        _id: new ObjectId("62091695a3f9106fed159ad6"),
-        fullname: "Slack",
-        email: "slack@gmail.com",
-        phone: "0801234567",
-        type: "company",
-        website: "",
-        position: "",
-        education: "",
-        jobType: "",
-        createdAt: "2022-02-13T14:32:53.648Z",
-        updatedAt: "2022-02-13T14:35:56.034Z",
-        __v: 0,
-        profileImg:
-          "https://jobjab-bucket-1.s3.ap-southeast-1.amazonaws.com/profile/62091695a3f9106fed159ad6_1644762901582.webp",
-      },
+      company: new ObjectId("62091695a3f9106fed159ad6"),
       title: "Project Manager",
       overview: "We are looking for part-time PM.",
       description:
@@ -296,7 +251,7 @@ module.exports = {
       type: "user",
       website: "",
       position: "",
-      education: "",
+      education: "King Mongkut's Institute of Technology Ladkrabang",
       jobType: "",
       createdAt: "2022-03-02T17:05:27.225Z",
       updatedAt: "2022-03-02T17:06:51.600Z",
@@ -322,4 +277,16 @@ module.exports = {
       __v: 0,
     },
   ],
+  configs:[
+    {
+      "_id": new ObjectId("6207d821f9770bc29dbdbc03"),
+      "home": true,
+      "applicationsList": false,
+      "companySignin": true,
+      "createdAt": "2022-02-12T15:54:09.646Z",
+      "updatedAt": "2022-02-12T15:54:09.646Z",
+      "__v": 0,
+      "companySignup": false
+  }
+  ]
 };

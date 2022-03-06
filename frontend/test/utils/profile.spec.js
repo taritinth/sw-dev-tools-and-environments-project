@@ -1,4 +1,4 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import {shallowMount } from '@vue/test-utils'
 import ProfilePage from '@/pages/profile/index.vue'
 import { axios } from '@/plugins/axios'
 import MockAdapter from 'axios-mock-adapter'

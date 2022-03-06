@@ -87,7 +87,7 @@
           v-if="$auth && $auth.loggedIn"
           class="flex flex-row items-center justify-between px-4 py-3 mb-4 font-medium rounded-2xl"
         >
-          <router-link to="/profile" class="flex items-center min-w-0 mr-3">
+          <router-link to="/profile" class="flex items-center min-w-0 mr-3" data-test="go-profile">
             <div
               v-if="$auth.user.type == 'company'"
               class="flex bg-blue-50 rounded-lg p-2 mr-3"
