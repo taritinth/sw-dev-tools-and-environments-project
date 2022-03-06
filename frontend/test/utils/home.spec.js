@@ -6,7 +6,7 @@ const $router = {
 }
 describe('IndexPage', () => {
   let notLoggedIn
-  let LoggedIn
+  let loggedIn
 
   beforeEach(() => {
     notLoggedIn = {
@@ -16,7 +16,7 @@ describe('IndexPage', () => {
       loggedIn: false,
       strategy: 'local',
     }
-    LoggedIn = {
+    loggedIn = {
       user: {
         type: 'user',
       },
@@ -135,7 +135,7 @@ describe('IndexPage', () => {
   test('should render home title', () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: LoggedIn,
+        $auth: loggedIn,
       },
     })
     const title = wrapper.find('[data-test="title"]').text()
@@ -145,7 +145,7 @@ describe('IndexPage', () => {
   test('should render search for internship', () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: LoggedIn,
+        $auth: loggedIn,
       },
     })
     const intern = wrapper.find('[data-test="internship"]').text()
@@ -155,7 +155,7 @@ describe('IndexPage', () => {
   test('should render search for full-time jobs', () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: LoggedIn,
+        $auth: loggedIn,
       },
     })
     const fullTime = wrapper.find('[data-test="full-time"]').text()
@@ -165,7 +165,7 @@ describe('IndexPage', () => {
   test('should render search for part-time jobs', () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: LoggedIn,
+        $auth: loggedIn,
       },
     })
     const partTime = wrapper.find('[data-test="part-time"]').text()
@@ -175,7 +175,7 @@ describe('IndexPage', () => {
   test('should render 3 buttons', () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: LoggedIn,
+        $auth: loggedIn,
       },
     })
     const button = wrapper.findAll('button')
@@ -185,7 +185,7 @@ describe('IndexPage', () => {
   test('if no user authentications', async () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: LoggedIn,
+        $auth: loggedIn,
       },
     })
     wrapper.vm.$auth.loggedIn
@@ -196,7 +196,7 @@ describe('IndexPage', () => {
     const wrapper = shallowMount(Home, {
       mocks: {
         $router,
-        $auth: LoggedIn,
+        $auth: loggedIn,
       },
     })
     const buttonIntern = wrapper.get('[data-test="explore-internship"]')
@@ -211,7 +211,7 @@ describe('IndexPage', () => {
     const wrapper = shallowMount(Home, {
       mocks: {
         $router,
-        $auth: LoggedIn,
+        $auth: loggedIn,
       },
     })
     const buttonFullTime = wrapper.get('[data-test="explore-fulltime"]')
@@ -226,7 +226,7 @@ describe('IndexPage', () => {
     const wrapper = shallowMount(Home, {
       mocks: {
         $router,
-        $auth: LoggedIn,
+        $auth: loggedIn,
       },
     })
     const buttonPartTime = wrapper.get('[data-test="explore-parttime"]')
