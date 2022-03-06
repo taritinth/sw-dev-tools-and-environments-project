@@ -172,7 +172,7 @@ describe('UserService', () => {
     })
 
     await flushPromises()
-
+    console.log(wrapper.vm.jobs)
     const jobs = wrapper.findAll('[data-test="job"]')
     expect(jobs).toHaveLength(3)
   })

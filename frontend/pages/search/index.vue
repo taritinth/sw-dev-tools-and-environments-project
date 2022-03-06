@@ -155,7 +155,7 @@ export default {
         })
 
         const response = await axios.get(`/api/jobs?${params}`)
-        console.log(response)
+        // console.log(response)
 
         this.jobs = response.data
       } catch (e) {
@@ -172,7 +172,7 @@ export default {
         const response = await axios.get(
           `/api/users/${this.$nuxt.$auth.user.id}`
         )
-        console.log(response)
+        // console.log(response)
 
         this.user = response.data
       } catch (e) {

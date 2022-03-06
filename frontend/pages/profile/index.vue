@@ -431,7 +431,7 @@ export default {
         const response = await axios.get(
           `/api/users/${this.$nuxt.$auth.user.id}`
         )
-        console.log(response)
+        // console.log(response)
 
         this.user = response.data
       } catch (e) {
@@ -445,11 +445,11 @@ export default {
       this.profileImg = this.$refs.profile.files[0]
       this.profileImgPath = URL.createObjectURL(this.profileImg)
 
-      console.log(this.profileImg)
+      // console.log(this.profileImg)
     },
     uploadResume() {
       this.resumeFile = this.$refs.resume.files[0]
-      console.log(this.resumeFile)
+      // console.log(this.resumeFile)
     },
     formatBytes(bytes, decimals = 2) {
       if (bytes === 0) {
@@ -475,7 +475,7 @@ export default {
           formData.append('resume', this.resumeFile)
           formData.append('profile', this.profileImg)
 
-          console.log(formData)
+          // console.log(formData)
 
           const headers = { 'Content-Type': 'multipart/form-data' }
           const response = await axios.put('/api/users', formData, {
@@ -486,7 +486,7 @@ export default {
               )
             },
           })
-          console.log(response)
+          // console.log(response)
 
           if (response.data?.success) {
             this.$toast.success('Successfully, Your profile has been updated')
