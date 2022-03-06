@@ -87,7 +87,7 @@
           v-if="$auth && $auth.loggedIn"
           class="flex flex-row items-center justify-between px-4 py-3 mb-4 font-medium rounded-2xl"
         >
-          <router-link to="/profile" class="flex items-center mr-3">
+          <router-link to="/profile" class="flex items-center min-w-0 mr-3" data-test="go-profile">
             <div
               v-if="$auth.user.type == 'company'"
               class="flex bg-blue-50 rounded-lg p-2 mr-3"
@@ -103,7 +103,7 @@
             </div>
             <div
               v-else
-              class="flex items-center rounded-full h-12 w-12 bg-blue-50 mr-3"
+              class="flex flex-shrink-0 items-center overflow-hidden rounded-full h-12 w-12 bg-blue-50 mr-3"
             >
               <img
                 v-if="$auth.user.profileImg"
@@ -112,12 +112,12 @@
                   '?v=' +
                   new Date($auth.user.updatedAt).valueOf()
                 "
-                class="rounded-full h-12 w-12 object-cover"
+                class="object-cover"
                 alt="profile img"
               />
             </div>
-            <div class="w-min">
-              <span>{{ $auth.user.fullname }}</span>
+            <div id="navFullname" class="truncate">
+              {{ $auth.user.fullname }}
             </div>
           </router-link>
 
@@ -236,7 +236,7 @@ export default {
     },
     async loadConfig() {
       try {
-        const response = await axios.get(`/configs`)
+        const response = await axios.get(`/api/configs`)
         console.log(response)
 
         this.setConfig(response.data)

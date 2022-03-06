@@ -1,19 +1,13 @@
-const mongoose = require("mongoose");
 const { Job } = require("../models/jobs.model");
+const { findAllJobs } = require("../repository/jobs.repository");
 
 const getAllJobs = async (req, res) => {
   let { query, type } = req.query;
 
-  Job.find({
-    $or: [
-      {
-        title: new RegExp(query, "i"),
-        type: new RegExp(type, "i"),
-      },
-    ],
+  findAllJobs({
+    title: query,
+    type: type,
   })
-    .populate("company", "-password")
-    .sort({ createdAt: -1 })
     .then((jobs) => res.json(jobs))
     .catch((err) => {
       console.log(err);

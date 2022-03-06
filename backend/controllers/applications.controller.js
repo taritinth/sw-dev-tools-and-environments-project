@@ -1,27 +1,20 @@
-const mongoose = require("mongoose");
 const { Application } = require("../models/applications.model");
 const { Job } = require("../models/jobs.model");
 const { User } = require("../models/users.model");
-const { ObjectId } = require("mongoose").Types;
+
+const {
+  findAllApplications,
+  findApplicationById,
+  findAndUpdateApplication,
+} = require("../repository/applications.repository");
 
 const getAllApps = async (req, res) => {
   const { status } = req.query;
 
-  Application.find({
-    $or: [
-      {
-        companyId: new ObjectId(req.user.id),
-      },
-      {
-        userId: new ObjectId(req.user.id),
-      },
-    ],
-    $and: [{ status: new RegExp(status, "i") }],
+  findAllApplications({
+    status: status,
+    userId: req.user.id,
   })
-    .populate("job")
-    .populate("company", "-password -createdAt -updatedAt")
-    .populate("user", "-password -createdAt -updatedAt")
-    .sort({ createdAt: -1 })
     .then((apps) => res.json(apps))
     .catch((err) => {
       console.log(err);
@@ -29,13 +22,10 @@ const getAllApps = async (req, res) => {
     });
 };
 
-const getApps = async (req, res) => {
+const getApp = async (req, res) => {
   let { id } = req.params;
 
-  Application.findById(id)
-    .populate("job")
-    .populate("company", "-password -createdAt -updatedAt")
-    .populate("user", "-password -createdAt -updatedAt")
+  findApplicationById({ id })
     .then((apps) => res.json(apps))
     .catch((err) => {
       console.log(err);
@@ -43,7 +33,7 @@ const getApps = async (req, res) => {
     });
 };
 
-const addApps = async (req, res) => {
+const addApp = async (req, res) => {
   let { job, company } = req.body;
   let user = req.user.id;
   const check = await Application.find({
@@ -54,7 +44,7 @@ const addApps = async (req, res) => {
   });
 
   if (check.length)
-    return res.json({
+    return res.status(400).json({
       message:
         "Failed, You have already applied for this job to this company before",
       success: false,
@@ -71,7 +61,7 @@ const addApps = async (req, res) => {
     !userObj.profileImg ||
     !userObj.resumeFile
   )
-    return res.json({
+    return res.status(400).json({
       message: "Warning, Please complete your profile before submit the job.",
       success: false,
     });
@@ -102,14 +92,13 @@ const addApps = async (req, res) => {
     });
 };
 
-const updateApps = async (req, res) => {
+const updateApp = async (req, res) => {
   let { id } = req.params;
   let { status } = req.body;
+
   //let result = await User.where({ _id: id }).updateOne({phone})
-  Application.where({ _id: id })
-    .updateOne({
-      status,
-    })
+
+  findAndUpdateApplication({ id, status })
     .then(() =>
       res.json({
         message: "Successfully, Application has updated",
@@ -122,4 +111,4 @@ const updateApps = async (req, res) => {
     });
 };
 
-module.exports = { getAllApps, getApps, addApps, updateApps };
+module.exports = { getAllApps, getApp, addApp, updateApp };

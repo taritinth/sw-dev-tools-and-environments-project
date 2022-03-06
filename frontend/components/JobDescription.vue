@@ -154,7 +154,7 @@ export default {
           job: this.job._id,
           company: this.job.company._id,
         }
-        const response = await axios.post('/applications', data)
+        const response = await axios.post('/api/applications', data)
         console.log(response)
 
         if (response.data?.success) {

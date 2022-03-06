@@ -20,6 +20,8 @@
               'focus:ring-blue-300': !$v.email.$error,
             }"
             type="text"
+            id="email"
+            data-test="email"
             placeholder="E-Mail"
           />
           <template v-if="$v.email.$error">
@@ -38,6 +40,8 @@
               'focus:ring-blue-300': !$v.password.$error,
             }"
             type="password"
+            id="password"
+            data-test="password"
             placeholder="Password"
           />
           <template v-if="$v.password.$error">
@@ -48,13 +52,14 @@
         </div>
         <div class="mt-12">
           <button
+          data-test="submit"
+            id="submit"
             type="submit"
             class="w-full text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
           >
             Sign in
           </button>
         </div>
-
         <div class="flex items-center justify-center mt-10">
           <div class="text-sm">
             <span class="font-light text-gray-500"
@@ -77,6 +82,7 @@ import { axios } from '@/plugins/axios'
 import { required, minValue } from 'vuelidate/lib/validators'
 
 export default {
+  name: 'signInPage',
   middleware: ['isNotLoggedIn'],
   //   layout: 'dashboard',
   data() {

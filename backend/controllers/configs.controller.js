@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const { Config } = require("../models/config.model");
 
 const getConfig = async (req, res) => {

@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
+const { User } = require("./users.model");
 const jobSchema = new mongoose.Schema(
   {
     company: {
       type: mongoose.Types.ObjectId,
       required: true,
-      ref: "User",
+      ref: User,
     },
     title: {
       type: String,
@@ -41,5 +42,6 @@ const jobSchema = new mongoose.Schema(
   }
 );
 
-const Job = mongoose.model("Job", jobSchema);
-module.exports = { Job };
+module.exports = {
+  Job: mongoose.model("Job", jobSchema),
+};
