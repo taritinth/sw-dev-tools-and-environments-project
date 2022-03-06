@@ -5,7 +5,6 @@ describe('JobJab', () => {
       cy.get('[data-test="email"]').type('applicant2@gmail.com')
       cy.get('[data-test="password"]').type(`123456`)
       cy.get('button[type=submit]').click();
-
       cy.get('[data-test="go-profile"]').click();
 
       cy.get('[data-test="fullname-input"]').should('have.value', 'Applicant 2')
