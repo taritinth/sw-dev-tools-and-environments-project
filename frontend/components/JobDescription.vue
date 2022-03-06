@@ -88,7 +88,7 @@
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
-import axios from 'axios'
+import { axios } from '@/plugins/axios'
 import JobTitle from './JobTitle.vue'
 export default {
   components: { JobTitle },

@@ -15,9 +15,9 @@ describe('JobJab', () => {
       cy.get('button[type=submit]').click();
 
       cy.visit('/search')
-      cy.get('[data-test="search-input"]').type('Full Stack Developer')
+      cy.get('[data-test="search-input"]').type('Project Manager')
       cy.wait(1000)
-      cy.contains('Full Stack Developer').click()
+      cy.contains('Project Manager').click()
       cy.wait(1000)
       cy.contains('Apply').click();
       
