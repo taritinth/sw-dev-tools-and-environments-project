@@ -1,7 +1,12 @@
 <template>
   <div class="container md:max-w-screen-md lg:max-w-screen-lg mx-auto">
     <div class="pt-8">
-      <h1 class="mb-5 text-2xl text-gray-800 dark:text-gray-500">Search</h1>
+      <h1
+        class="mb-5 text-2xl text-gray-800 dark:text-gray-500"
+        data-test="title"
+      >
+        Search
+      </h1>
 
       <div class="flex flex-col sm:flex-row gap-3 mb-6">
         <div class="relative w-full">
@@ -22,6 +27,7 @@
             v-model="query"
             @input="onSearch"
             type="text"
+            data-test="search-input"
             placeholder="What are you looking for..."
             class="border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-2 focus:ring-blue-300 focus:outline-none block w-full py-3 pl-12"
           />
@@ -67,10 +73,11 @@
           :key="index"
           @click="showJobDesc(job)"
           class="flex flex-col items-start justify-between rounded-3xl h-80 bg-white p-8 shadow-1 cursor-pointer"
+          data-test="job"
         >
-          <div class="block">
+          <div class="block" data-test="job-overview">
             <job-title :title="job.title" :company="job.company" />
-            <p class="text-base font-extralight text-gray-500 mt-4">
+            <p class="text-base font-extralight text-gray-500 mt-4" >
               {{ job.overview }}
             </p>
           </div>
@@ -108,6 +115,7 @@ import JobDescription from '../../components/JobDescription.vue'
 import JobTitle from '../../components/JobTitle.vue'
 
 export default {
+  name: 'Search',
   components: { JobDescription, JobTitle },
   layout: 'dashboard',
   data() {
@@ -146,8 +154,8 @@ export default {
           query: { query: this.query, type: this.type },
         })
 
-        const response = await axios.get(`/jobs?${params}`)
-        console.log(response)
+        const response = await axios.get(`/api/jobs?${params}`)
+        // console.log(response)
 
         this.jobs = response.data
       } catch (e) {
@@ -161,8 +169,10 @@ export default {
       try {
         this.loading = true
 
-        const response = await axios.get(`/users/${this.$nuxt.$auth.user.id}`)
-        console.log(response)
+        const response = await axios.get(
+          `/api/users/${this.$nuxt.$auth.user.id}`
+        )
+        // console.log(response)
 
         this.user = response.data
       } catch (e) {

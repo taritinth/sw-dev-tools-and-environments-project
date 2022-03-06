@@ -28,21 +28,12 @@ export default {
     { src: '~/assets/css/custom.css', lang: 'css' },
     { src: '~/assets/quill.css', lang: 'css' },
     { src: '~/assets/css/flowbite.css', lang: 'css' },
-    // ...
-    // 'quill/dist/quill.core.css',
-    // // for snow theme
-    // 'quill/dist/quill.snow.css',
-    // // for bubble theme
-    // 'quill/dist/quill.bubble.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/vuelidate', ssr: true },
     { src: '~plugins/nuxt-quill-plugin', ssr: false },
-    // { src: '~plugins/flowbite', ssr: false },
-    // { src: '~plugins/datepicker', ssr: false },
-    // { src: '~/plugins/quill-editor.js', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -80,15 +71,15 @@ export default {
       local: {
         endpoints: {
           login: {
-            url: '/auth/signin',
+            url: '/api/auth/signin',
             method: 'post',
             propertyName: 'user.token',
           },
-          user: { url: '/auth/me', method: 'get', propertyName: '' },
+          user: { url: '/api/auth/me', method: 'get', propertyName: '' },
           logout: false,
         },
       },
-      // tokenName: 'Authorization'
+      // tokenName: 'Authorization',
     },
     redirect: {
       login: '/signin',
@@ -100,10 +91,15 @@ export default {
   axios: {
     baseURL:
       process.env.NODE_ENV === 'production'
-        ? 'http://18.140.121.44:8080/api'
-        : 'http://localhost:8080/api',
+        ? 'http://18.140.121.44:8080'
+        : 'http://localhost:8080',
     withCredentials: true,
+    // proxy: true, // Can be also an object with default options
   },
+
+  // proxy: {
+  //   '/api/': 'http://localhost:8080',
+  // },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

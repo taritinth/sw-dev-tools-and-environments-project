@@ -1,4 +1,5 @@
 module.exports = {
+  setupFilesAfterEnv: ['./jest.setup.js'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
@@ -14,5 +15,8 @@ module.exports = {
     '<rootDir>/components/**/*.vue',
     '<rootDir>/pages/**/*.vue',
   ],
+  setupFiles: ['<rootDir>/node_modules/core-js'],
   testEnvironment: 'jsdom',
+  preset: '@nuxt/test-utils',
+  testTimeout: 120000
 }

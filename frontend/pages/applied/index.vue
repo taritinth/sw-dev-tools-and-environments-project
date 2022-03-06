@@ -132,7 +132,7 @@ export default {
 
         const params = [`status=${this.status}`].join('&')
 
-        const response = await axios.get(`/applications?${params}`)
+        const response = await axios.get(`/api/applications?${params}`)
         console.log(response)
 
         this.applications = response.data

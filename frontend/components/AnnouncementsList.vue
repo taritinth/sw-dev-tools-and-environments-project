@@ -119,7 +119,7 @@ export default {
       try {
         if (loading) this.loading = true
 
-        const response = await axios.get(`/jobs/announcements`)
+        const response = await axios.get(`/api/jobs/announcements`)
         console.log(response)
 
         this.announcements = response.data

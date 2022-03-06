@@ -1,4 +1,3 @@
-const req = require("express/lib/request");
 const multer = require("multer");
 
 const upload = multer({
@@ -25,4 +24,5 @@ let filesUpload = upload.fields([
   { name: "profile", maxCount: 1 },
   { name: "resume", maxCount: 1 },
 ]);
+
 module.exports = { filesUpload };
