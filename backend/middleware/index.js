@@ -1,9 +1,6 @@
-const logger = (req, res, next) => {
-  const timestamp = new Date().toISOString();
-  console.log(`${timestamp} | ${req.method}: ${decodeURI(req.originalUrl)}`);
-  next();
-};
+const auth = require("./auth");
+const logger = require("./logger");
+const application = require("./application");
+const job = require("./job");
 
-module.exports = {
-  logger,
-};
+module.exports = { ...auth, ...logger, ...application, ...job };
