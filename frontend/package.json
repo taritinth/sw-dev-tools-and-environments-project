@@ -13,13 +13,10 @@
     "lintfix": "prettier --write --list-different . && yarn lint:js --fix",
     "test": "jest",
     "test:utils": "jest test/utils --coverage",
-    "test:unit": "jest test/unit",
-    "test:unit-dev": "jest test/unit-dev",
-    "test:e2e": "jest test/e2e",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "cypress:open": "cypress open",
-    "e2e": "start-server-and-test dev http://localhost:3000 cypress:open"
+    "test:e2e": "start-server-and-test dev http://localhost:3000 cypress:open"
   },
   "dependencies": {
     "@braid/vue-formulate": "^2.5.3",
