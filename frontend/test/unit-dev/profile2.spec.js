@@ -155,7 +155,7 @@ describe('ProfilePage', () => {
   })
 
   // Test Case No.1
-  test('Should render Profile title', () => {
+  test('should render profile title', () => {
     const wrapper = shallowMount(ProfilePage, {
       mocks: {
         $v,
@@ -172,7 +172,7 @@ describe('ProfilePage', () => {
     expect(title.text()).toEqual('Profile')
   })
 
-  test('Should render Profile title', async () => {
+  test('should render profile title', async () => {
     mockAxios.onGet('/api/users/620948092ad991e73d2f6011').reply(200, {
       _id: '620948092ad991e73d2f6011',
       fullname: 'Tarit Khanbo',
