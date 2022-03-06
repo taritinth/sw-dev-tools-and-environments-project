@@ -5,18 +5,18 @@ const $router = {
   push: jest.fn(),
 }
 describe('IndexPage', () => {
-  let authMock
-  let authMock2
+  let notLoggedIn
+  let LoggedIn
 
   beforeEach(() => {
-    authMock = {
+    notLoggedIn = {
       user: {
         type: 'user',
       },
       loggedIn: false,
       strategy: 'local',
     }
-    authMock2 = {
+    LoggedIn = {
       user: {
         type: 'user',
       },
@@ -25,74 +25,74 @@ describe('IndexPage', () => {
     }
   })
 
-  test('Should render Home title', () => {
+  test('should render home title', () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: authMock,
+        $auth: notLoggedIn,
       },
     })
     const title = wrapper.find('[data-test="title"]').text()
     expect(title).toEqual('Home')
   })
 
-  test('Should be render Search for Internship', () => {
+  test('should render search for Internship', () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: authMock,
+        $auth: notLoggedIn,
       },
     })
     const intern = wrapper.find('[data-test="internship"]').text()
     expect(intern).toEqual('Search for Internships')
   })
 
-  test('Should be render Search for Full-time jobs', () => {
+  test('should render search for full-time jobs', () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: authMock,
+        $auth: notLoggedIn,
       },
     })
     const fullTime = wrapper.find('[data-test="full-time"]').text()
     expect(fullTime).toEqual('Search for Full-time jobs')
   })
 
-  test('Should be render Search for Part-time jobs', () => {
+  test('should render search for part-time jobs', () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: authMock,
+        $auth: notLoggedIn,
       },
     })
     const partTime = wrapper.find('[data-test="part-time"]').text()
     expect(partTime).toEqual('Search for Part-time jobs')
   })
 
-  test('Should render 3 buttons', () => {
+  test('should render 3 buttons', () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: authMock,
+        $auth: notLoggedIn,
       },
     })
     const button = wrapper.findAll('button')
     expect(button).toHaveLength(3)
   })
 
-  test('If no user authentications', async () => {
+  test('if no user authentications', async () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: authMock,
+        $auth: notLoggedIn,
       },
     })
     wrapper.vm.$auth.loggedIn
     console.log(wrapper.vm.$auth.loggedIn)
   })
 
-  test('Click to explore an internship page', async () => {
+  test('should navigate to explore internship page', async () => {
     const wrapper = shallowMount(Home, {
       mocks: {
         $router,
-        $auth: authMock,
+        $auth: notLoggedIn,
       },
     })
-    const buttonIntern = wrapper.get('[data-test="button-of-intern"]')
+    const buttonIntern = wrapper.get('[data-test="explore-internship"]')
     buttonIntern.trigger('click')
     expect($router.push).toHaveBeenCalledWith({
       path: '/search',
@@ -100,31 +100,31 @@ describe('IndexPage', () => {
     })
   })
 
-  test('Click to explore an Full-Time page', async () => {
+  test('should navigate to explore full-time page', async () => {
     const wrapper = shallowMount(Home, {
       mocks: {
         $router,
-        $auth: authMock,
+        $auth: notLoggedIn,
       },
     })
-    const buttonFull = wrapper.get('[data-test="button-of-fulltime"]')
-    buttonFull.trigger('click')
+    const buttonFullTime = wrapper.get('[data-test="explore-fulltime"]')
+    buttonFullTime.trigger('click')
     expect($router.push).toHaveBeenCalledWith({
       path: '/search',
       query: { query: '', type: 'fulltime' },
     })
   })
 
-  test('Click to explore an Part-Time page', async () => {
+  test('should navigate to explore part-time page', async () => {
     const wrapper = shallowMount(Home, {
       mocks: {
         $router,
-        $auth: authMock,
+        $auth: notLoggedIn,
       },
     })
-    const buttonPart = wrapper.get('[data-test="button-of-parttime"]')
+    const buttonPartTime = wrapper.get('[data-test="explore-parttime"]')
 
-    buttonPart.trigger('click')
+    buttonPartTime.trigger('click')
 
     expect($router.push).toHaveBeenCalledWith({
       path: '/search',
@@ -132,74 +132,74 @@ describe('IndexPage', () => {
     })
   })
 
-  test('Should render Home title', () => {
+  test('should render home title', () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: authMock2,
+        $auth: LoggedIn,
       },
     })
     const title = wrapper.find('[data-test="title"]').text()
     expect(title).toEqual('Home')
   })
 
-  test('Should be render Search for Internship', () => {
+  test('should render search for internship', () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: authMock2,
+        $auth: LoggedIn,
       },
     })
     const intern = wrapper.find('[data-test="internship"]').text()
     expect(intern).toEqual('Search for Internships')
   })
 
-  test('Should be render Search for Full-time jobs', () => {
+  test('should render search for full-time jobs', () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: authMock2,
+        $auth: LoggedIn,
       },
     })
     const fullTime = wrapper.find('[data-test="full-time"]').text()
     expect(fullTime).toEqual('Search for Full-time jobs')
   })
 
-  test('Should be render Search for Part-time jobs', () => {
+  test('should render search for part-time jobs', () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: authMock2,
+        $auth: LoggedIn,
       },
     })
     const partTime = wrapper.find('[data-test="part-time"]').text()
     expect(partTime).toEqual('Search for Part-time jobs')
   })
 
-  test('Should render 3 buttons', () => {
+  test('should render 3 buttons', () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: authMock2,
+        $auth: LoggedIn,
       },
     })
     const button = wrapper.findAll('button')
     expect(button).toHaveLength(3)
   })
 
-  test('If no user authentications', async () => {
+  test('if no user authentications', async () => {
     const wrapper = mount(Home, {
       mocks: {
-        $auth: authMock2,
+        $auth: LoggedIn,
       },
     })
     wrapper.vm.$auth.loggedIn
     console.log(wrapper.vm.$auth.loggedIn)
   })
 
-  test('Click to explore an internship page', async () => {
+  test('should navigate to explore internship page', async () => {
     const wrapper = shallowMount(Home, {
       mocks: {
         $router,
-        $auth: authMock2,
+        $auth: LoggedIn,
       },
     })
-    const buttonIntern = wrapper.get('[data-test="button-of-intern"]')
+    const buttonIntern = wrapper.get('[data-test="explore-internship"]')
     buttonIntern.trigger('click')
     expect($router.push).toHaveBeenCalledWith({
       path: '/search',
@@ -207,31 +207,31 @@ describe('IndexPage', () => {
     })
   })
 
-  test('Click to explore an Full-Time page', async () => {
+  test('should navigate to explore full-time page', async () => {
     const wrapper = shallowMount(Home, {
       mocks: {
         $router,
-        $auth: authMock2,
+        $auth: LoggedIn,
       },
     })
-    const buttonFull = wrapper.get('[data-test="button-of-fulltime"]')
-    buttonFull.trigger('click')
+    const buttonFullTime = wrapper.get('[data-test="explore-fulltime"]')
+    buttonFullTime.trigger('click')
     expect($router.push).toHaveBeenCalledWith({
       path: '/search',
       query: { query: '', type: 'fulltime' },
     })
   })
 
-  test('Click to explore an Part-Time page', async () => {
+  test('should navigate to explore part-time page', async () => {
     const wrapper = shallowMount(Home, {
       mocks: {
         $router,
-        $auth: authMock2,
+        $auth: LoggedIn,
       },
     })
-    const buttonPart = wrapper.get('[data-test="button-of-parttime"]')
+    const buttonPartTime = wrapper.get('[data-test="explore-parttime"]')
 
-    buttonPart.trigger('click')
+    buttonPartTime.trigger('click')
 
     expect($router.push).toHaveBeenCalledWith({
       path: '/search',

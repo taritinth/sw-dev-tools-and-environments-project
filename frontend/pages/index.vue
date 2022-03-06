@@ -33,7 +33,7 @@
               type="button"
               class="text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
               style="height: fit-content"
-              data-test="button-of-intern"
+              data-test="explore-internship"
             >
               Explore
             </button>
@@ -70,7 +70,7 @@
               type="button"
               class="text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
               style="height: fit-content"
-              data-test="button-of-fulltime"
+              data-test="explore-fulltime"
             >
               Explore
             </button>
@@ -102,7 +102,7 @@
               type="button"
               class="text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
               style="height: fit-content"
-              data-test="button-of-parttime"
+              data-test="explore-parttime"
             >
               Explore
             </button>

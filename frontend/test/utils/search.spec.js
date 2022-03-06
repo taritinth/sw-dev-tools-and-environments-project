@@ -21,7 +21,7 @@ describe('UserService', () => {
   beforeEach(() => {
     mockAxios = new MockAdapter(axios)
   })
-  test('Should render Search title', () => {
+  test('should render search title', () => {
     const wrapper = mount(SearchPage, {
       mocks: {
         $route,
@@ -33,7 +33,7 @@ describe('UserService', () => {
     expect(title).toEqual('Search')
   })
 
-  test('Should render 1 box of input', async () => {
+  test('should render 1 box of input', async () => {
     const wrapper = mount(SearchPage, {
       mocks: {
         $route,
@@ -45,7 +45,7 @@ describe('UserService', () => {
     expect(inputBox).toHaveLength(1)
   })
 
-  test('Should render Search title', () => {
+  test('should render search title', () => {
     const wrapper = mount(SearchPage, {
       mocks: {
         $route,
@@ -57,7 +57,7 @@ describe('UserService', () => {
     expect(title).toEqual('Search')
   })
 
-  test('Should render 1 box of input', async () => {
+  test('should render 1 box of input', async () => {
     const wrapper = mount(SearchPage, {
       mocks: {
         $route,
