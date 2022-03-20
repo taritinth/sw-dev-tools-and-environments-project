@@ -16,7 +16,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "cypress:open": "cypress open",
-    "test:e2e": "start-server-and-test dev http://localhost:3000 cypress:open"
+    "cypress:run": "cypress run",
+    "test:e2e": "start-server-and-test dev http://localhost:3000 cypress:run"
   },
   "dependencies": {
     "@braid/vue-formulate": "^2.5.3",
