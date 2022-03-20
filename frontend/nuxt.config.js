@@ -92,7 +92,7 @@ export default {
     baseURL:
       process.env.NODE_ENV === 'production'
         ? 'http://18.140.121.44:8080'
-        : 'http://localhost:8080',
+        : 'http://localhost:8081',
     withCredentials: true,
     // proxy: true, // Can be also an object with default options
   },

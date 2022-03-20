@@ -3,7 +3,7 @@ const instance = axios.create({
   baseURL:
     process.env.NODE_ENV === 'production'
       ? 'http://18.140.121.44:8080'
-      : 'http://localhost:8080',
+      : 'http://localhost:8081',
 })
 
 const getToken = function () {
