@@ -1,8 +1,8 @@
 import { shallowMount, mount } from '@vue/test-utils'
-import { axios } from '@/plugins/axios'
-import SearchPage from '@/pages/search/index.vue'
 import MockAdapter from 'axios-mock-adapter'
 import flushPromises from 'flush-promises'
+import { axios } from '@/plugins/axios'
+import SearchPage from '@/pages/search/index.vue'
 const $router = {
   push: jest.fn(),
 }
@@ -68,7 +68,7 @@ describe('UserService', () => {
     const inputBox = wrapper.findAll('[data-test="search-input"]')
     expect(inputBox).toHaveLength(1)
   })
-  
+
   test('should load and display 3 jobs', async () => {
     mockAxios.onGet('/api/jobs?query=&type=').reply(200, [
       {
