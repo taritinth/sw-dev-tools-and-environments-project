@@ -23,10 +23,11 @@ describe('JobJab', () => {
     cy.get('button[type=submit]').click()
 
     cy.visit('/search')
+    cy.wait(2000)
     cy.get('[data-test="search-input"]').type('Project Manager')
-    cy.wait(1000)
+    cy.wait(2000)
     cy.contains('Project Manager').click()
-    cy.wait(1000)
+    cy.wait(2000)
     cy.contains('Apply').click()
   })
 })
