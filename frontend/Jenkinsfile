@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+    
+    environment{
+        JWT_SECRET = '[?m-A9+^/(A5VK]p}gZ_Jr@ZuRa%5:ng'
+    }
+
+    stages {
+        stage('Pull code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/taritinth/sw-dev-tools-and-environments-project.git'
+            }
+        }
+        stage('Download dependency') {
+            steps {
+                sh 'cd frontend && npm install'
+                sh 'cd backend && npm install'
+            }
+        }
+        stage('Run unit test') {
+            steps {
+                sh 'cd frontend && npm run test:unit'
+            }
+        }
+        stage('Run component test') {
+            steps {
+                sh 'cd frontend && npm run test:component'
+            }
+        }
+        stage("Code coverage report") {
+            steps {
+                clover(cloverReportDir: 'frontend/coverage', cloverReportFileName: 'clover.xml',
+                    healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80],
+                    unhealthyTarget: [methodCoverage: 50, conditionalCoverage: 50, statementCoverage: 50],
+                    failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
+                )
+            }
+        }
+    }
+}
