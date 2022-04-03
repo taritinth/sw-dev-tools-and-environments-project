@@ -21,7 +21,7 @@ pipeline {
             steps {
                 dir('./frontend') {
                     bat 'npm run test:unit'
-                    publibatHTML target: [
+                    publishHTML target: [
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
                         keepAll: true,
