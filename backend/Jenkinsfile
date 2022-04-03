@@ -28,14 +28,6 @@ pipeline {
                         reportFiles: "index.html",
                         reportName: 'Unit Test Coverage Report'
                     ]
-                    // publishHTML target: [
-                    //     allowMissing: false,
-                    //     alwaysLinkToLastBuild: false,
-                    //     keepAll: true,
-                    //     reportDir: "./coverage",
-                    //     reportFiles: "report.html",
-                    //     reportName: 'Unit Test Report'
-                    // ]
                    
                 }
             }
