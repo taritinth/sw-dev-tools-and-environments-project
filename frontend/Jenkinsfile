@@ -19,46 +19,50 @@ pipeline {
         }
         stage('Run unit test') {
             steps {
-                sh 'cd frontend && npm run test:unit'
-                publishHTML target: [
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: false,
-                    keepAll: true,
-                    reportDir: "./coverage/lcov-report",
-                    reportFiles: "index.html",
-                    reportName: 'Unit Test Coverage Report'
-                ]
+                dir('./frontend') {
+                    sh 'npm run test:unit'
+                    publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "./coverage/lcov-report",
+                        reportFiles: "index.html",
+                        reportName: 'Unit Test Coverage Report'
+                    ]
 
-                publishHTML target: [
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: false,
-                    keepAll: true,
-                    reportDir: "./coverage",
-                    reportFiles: "report.html",
-                    reportName: 'Unit Test Report'
-                ]
+                    publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "./coverage",
+                        reportFiles: "report.html",
+                        reportName: 'Unit Test Report'
+                    ]
+                }
             }
         }
         stage('Run component test') {
             steps {
-                sh 'cd frontend && npm run test:component'
-                publishHTML target: [
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: false,
-                    keepAll: true,
-                    reportDir: "./coverage/lcov-report",
-                    reportFiles: "index.html",
-                    reportName: 'Component Test Coverage Report'
-                ]
+                dir('./frontend') {
+                    sh 'npm run test:component'
+                    publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "./coverage/lcov-report",
+                        reportFiles: "index.html",
+                        reportName: 'Component Test Coverage Report'
+                    ]
 
-                publishHTML target: [
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: false,
-                    keepAll: true,
-                    reportDir: "./coverage",
-                    reportFiles: "report.html",
-                    reportName: 'Component Test Report'
-                ]
+                    publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "./coverage",
+                        reportFiles: "report.html",
+                        reportName: 'Component Test Report'
+                    ]
+                }
             }
         }
         stage("Code coverage report") {
