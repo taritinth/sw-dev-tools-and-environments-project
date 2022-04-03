@@ -29,7 +29,6 @@ pipeline {
                         reportName: 'Unit Test Coverage Report'
                     ]
 
-                    //     reportDir: "./coverage",
                     //     reportFiles: "report.html",
                     //     reportName: 'Unit Test Report'
                     // ]
