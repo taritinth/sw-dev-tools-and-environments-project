@@ -51,7 +51,14 @@ pipeline {
                         reportFiles: "index.html",
                         reportName: 'Component Test Coverage Report'
                     ]
-
+                    // publishHTML target: [
+                    //     allowMissing: false,
+                    //     alwaysLinkToLastBuild: false,
+                    //     keepAll: true,
+                    //     reportDir: "./coverage",
+                    //     reportFiles: "report.html",
+                    //     reportName: 'Component Test Report'
+                    // ]
 
                 }
             }
