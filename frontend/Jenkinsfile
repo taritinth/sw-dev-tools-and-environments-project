@@ -13,14 +13,14 @@ pipeline {
         }
         stage('Download dependency') {
             steps {
-                bat 'cd frontend && npm install'
+                sh 'cd frontend && npm install'
                 // bat 'cd backend && npm install'
             }
         }
         stage('Run unit test') {
             steps {
                 dir('./frontend') {
-                    bat 'npm run test:unit'
+                    sh 'npm run test:unit'
                     publishHTML target: [
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
@@ -43,7 +43,7 @@ pipeline {
         }
         stage('Run component test') {
             steps {
-                bat 'cd frontend && npm run test:component'
+                sh 'cd frontend && npm run test:component'
             }
         }
         stage("Code coverage report") {
