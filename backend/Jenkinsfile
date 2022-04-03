@@ -24,7 +24,7 @@ pipeline {
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
                         keepAll: true,
-                        reportDir: "./coverage/lcov-report",
+                        reportDir: "./coverage",
                         reportFiles: "index.html",
                         reportName: 'Unit Test Coverage Report'
                     ]
@@ -48,7 +48,7 @@ pipeline {
                         allowMissing: false,
                         alwaysLinkToLastBuild: false,
                         keepAll: true,
-                        reportDir: "./coverage/lcov-report",
+                        reportDir: "./coverage",
                         reportFiles: "index.html",
                         reportName: 'Component Test Coverage Report'
                     ]
