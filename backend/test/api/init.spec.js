@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const mongoUnit = require("mongo-unit");
 
+console.log = function () {};
+console.error = function () {};
+
 console.log("Waiting for mock database...");
 
 mongoUnit.start().then(() => {
