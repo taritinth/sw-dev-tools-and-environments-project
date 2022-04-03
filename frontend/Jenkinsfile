@@ -19,26 +19,24 @@ pipeline {
         }
         stage('Run unit test') {
             steps {
-                dir('./frontend') {
-                    sh 'npm run test:unit'
-                    publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: "./coverage/lcov-report",
-                        reportFiles: "index.html",
-                        reportName: 'Unit Test Coverage Report'
-                    ]
+                sh 'cd frontend && npm run test:unit'
+                publishHTML target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: "./coverage/lcov-report",
+                    reportFiles: "index.html",
+                    reportName: 'Unit Test Coverage Report'
+                ]
 
-                    publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: "./coverage",
-                        reportFiles: "report.html",
-                        reportName: 'Unit Test Report'
-                    ]
-                }
+                publishHTML target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: "./coverage",
+                    reportFiles: "report.html",
+                    reportName: 'Unit Test Report'
+                ]
             }
         }
         stage('Run component test') {
