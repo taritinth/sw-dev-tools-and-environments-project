@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-const mongoUnit = require("mongo-unit");
 
 const mockData = require("../test/__mock__/data");
 
 const connectMockDB = () =>
   new Promise((resolve, reject) => {
     try {
+      const mongoUnit = require("mongo-unit");
       console.log("Waiting for mock database...");
       mongoUnit.start().then(() => {
         process.env.MONGO_TEST_URL = mongoUnit.getUrl();
