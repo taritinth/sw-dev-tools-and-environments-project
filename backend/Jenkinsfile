@@ -29,7 +29,6 @@ pipeline {
                         reportName: 'Unit Test Coverage Report'
                     ]
 
-                    //     alwaysLinkToLastBuild: false,
                     //     keepAll: true,
                     //     reportDir: "./coverage",
                     //     reportFiles: "report.html",
