@@ -46,7 +46,6 @@ pipeline {
                     ]
 
 
-                    //     keepAll: true,
                     //     reportDir: "./coverage",
                     //     reportFiles: "report.html",
                     //     reportName: 'Component Test Report'
