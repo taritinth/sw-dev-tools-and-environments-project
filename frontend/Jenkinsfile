@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Run unit test') {
             steps {
-                dir('./front-end') {
+                dir('./frontend') {
                     bat 'npm run test:unit'
                     publibatHTML target: [
                         allowMissing: false,
