@@ -46,7 +46,6 @@ pipeline {
                     ]
 
 
-                    //     reportName: 'Component Test Report'
                     // ]
                 }
             }
