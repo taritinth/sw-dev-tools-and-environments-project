@@ -58,6 +58,7 @@
     "eslint-plugin-vue": "^8.2.0",
     "flush-promises": "^1.0.2",
     "jest": "^27.5.1",
+    "jest-html-reporter": "^3.4.2",
     "playwright": "^1.19.2",
     "postcss": "^8.4.6",
     "prettier": "^2.5.1",

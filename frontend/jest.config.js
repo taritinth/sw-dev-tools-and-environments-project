@@ -18,5 +18,15 @@ module.exports = {
   setupFiles: ['<rootDir>/node_modules/core-js'],
   testEnvironment: 'jsdom',
   preset: '@nuxt/test-utils',
-  testTimeout: 120000
+  testTimeout: 120000,
+  reporters: [
+    "default",
+    [
+      "../node_modules/jest-html-reporter",
+      {
+        pageTitle: "Unit Test Report",
+        outputPath: "./coverage/report.html",
+      },
+    ],
+  ]
 }
