@@ -1,0 +1,10 @@
+version: "3"
+services:
+  frontend:
+    image: 808218764127/team-8-frontend:1.0
+    ports:
+      - "80:5000"
+  backend:
+    image: 808218764127/team-8-backend:1.0
+    ports:
+      - "8081:8081"
