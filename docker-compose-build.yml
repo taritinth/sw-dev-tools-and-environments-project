@@ -1,8 +1,8 @@
 version: "3"
 services:
   frontend:
-    image: team-8-frontend
+    image: 808218764127/team-8-frontend
     build: ./frontend
   backend:
-    image: team-8-backend
+    image: 808218764127/team-8-backend
     build: ./backend
