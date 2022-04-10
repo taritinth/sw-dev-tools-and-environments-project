@@ -2,7 +2,7 @@ import axios from 'axios'
 const instance = axios.create({
   baseURL:
     process.env.NODE_ENV === 'production'
-      ? 'http://18.140.121.44:8080'
+      ? 'http://159.223.45.216:9999'
       : 'http://localhost:8081',
 })
 
