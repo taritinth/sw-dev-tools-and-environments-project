@@ -74,6 +74,9 @@ pipeline {
             }
         }
         stage("Build Docker Compose") {
+            agent {
+                docker { image '808218764127/team-8-frontend:1.0' }
+            }
             steps {
                 sh 'docker compose -f docker-compose-build.yml build'
             }
