@@ -91,7 +91,7 @@ export default {
   axios: {
     baseURL:
       process.env.NODE_ENV === 'production'
-        ? 'http://18.140.121.44:8080'
+        ? 'http://159.223.45.216:9999'
         : 'http://localhost:8081',
     withCredentials: true,
     // proxy: true, // Can be also an object with default options
