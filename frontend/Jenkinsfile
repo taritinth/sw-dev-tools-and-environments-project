@@ -83,4 +83,3 @@ pipeline {
         }
     }
 }
-docker pull 808218764127/team-8-backend:1.0
