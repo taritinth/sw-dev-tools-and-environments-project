@@ -78,8 +78,9 @@ pipeline {
                 docker { image '808218764127/team-8-frontend:1.0' }
             }
             steps {
-                sh 'docker compose -f docker-compose-build.yml build'
+                sh 'docker-compose -f docker-compose-build.yml build'
             }
         }
     }
 }
+docker pull 808218764127/team-8-backend:1.0
