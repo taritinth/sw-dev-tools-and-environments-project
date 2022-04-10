@@ -80,10 +80,14 @@ pipeline {
             // steps {
             //     sh 'docker-compose -f docker-compose-build.yml build'
             // }
-            echo 'Build docker image'
+            steps {
+                echo 'Build docker image'
+            }
         }
-        stage("deploy") {
-            echo 'Deploy docker-compose'
+        stage("Deploy") {
+            steps {
+                echo 'Deploy docker-compose'
+            }
         }
     }
 }
