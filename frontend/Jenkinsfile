@@ -73,13 +73,17 @@ pipeline {
                 )
             }
         }
-        stage("Build Docker Compose") {
-            agent {
-                docker { image '808218764127/team-8-frontend:1.0' }
-            }
-            steps {
-                sh 'docker-compose -f docker-compose-build.yml build'
-            }
+        stage("Build") {
+            // agent {
+            //     docker { image '808218764127/team-8-frontend:1.0.0' }
+            // }
+            // steps {
+            //     sh 'docker-compose -f docker-compose-build.yml build'
+            // }
+            echo 'Build docker image'
+        }
+        stage("deploy") {
+            echo 'Deploy docker-compose'
         }
     }
 }
