@@ -57,5 +57,29 @@ pipeline {
                 )
             }
         }
+        stage("Deploy") {
+            steps {
+                withCredentials([
+                    string(credentialsId: 'TEAM8_USERNAME', variable: 'TEAM8_USERNAME'), 
+                    string(credentialsId: 'TEAM8_BACKEND_HOST', variable: 'TEAM8_BACKEND_HOST'), 
+                    string(credentialsId: 'TEAM8_HOST_PASSWORD', variable: 'TEAM8_HOST_PASSWORD')])
+                {
+                    script{
+                        def remote = [:]
+                        remote.name = TEAM8_USERNAME
+                        remote.host = TEAM8_BACKEND_HOST
+                        remote.user = TEAM8_USERNAME
+                        remote.password = TEAM8_HOST_PASSWORD
+                        remote.allowAnyHosts = true
+                        sshCommand remote: remote, command: "git clone -b main https://github.com/taritinth/sw-dev-tools-and-environments-project.git team-8-backend"
+                        sshCommand remote: remote, command: "docker-compose -f team-8-backend/docker-compose-deploy.yml down"
+                        sshCommand remote: remote, command: "docker-compose -f team-8-backend/docker-compose-build.yml build backend"
+                        sshCommand remote: remote, command: "docker-compose -f team-8-backend/docker-compose-deploy.yml up -d backend"
+                        sshCommand remote: remote, command: "rm -r team-8-backend"
+                    }
+                }
+             
+            }
+        }
     }
 }
