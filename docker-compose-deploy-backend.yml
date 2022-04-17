@@ -16,7 +16,7 @@ secrets:
 
 services:
   backend:
-    image: 808218764127/team-8-backend:1.0.0
+    image: 808218764127/team-8-backend:1.0.83
     secrets:
       - ATLAS_URI
       - ATLAS_TEST_URI
