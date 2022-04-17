@@ -95,7 +95,7 @@ pipeline {
                 //     ]
                 // ]){
                 withCredentials([file(
-                    credentialsId: '2d6ba988-e935-4fd1-822b-c69cf81b9020', 
+                    credentialsId: 'team8_host', 
                     variable: 'team8_host')
                 ]){
                     script{
