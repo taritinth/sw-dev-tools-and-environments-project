@@ -95,7 +95,7 @@ pipeline {
                     remote.allowAnyHosts = true
                     sshCommand remote: remote, command: "git clone -b main https://github.com/taritinth/sw-dev-tools-and-environments-project.git team-8-frontend"
                     sshCommand remote: remote, command: "docker-compose -f team-8-frontend/docker-compose-build.yml build frontend"
-                    sshCommand remote: remote, command: "docker-compose -f team-8-frontend/docker-compose-deploy.yml up -d frontend"
+                    sshCommand remote: remote, command: "docker-compose -f team-8-frontend/docker-compose-deploy.yml up -d --force-recreate frontend"
                     sshCommand remote: remote, command: "rm -r team-8-frontend"
 
                 }
