@@ -94,17 +94,21 @@ pipeline {
                 //         passwordVariable: 'PASSWORD'
                 //     ]
                 // ]){
-                withCredentials([file(
-                    credentialsId: 'team8_host', 
-                    variable: 'team8_host')
-                ]){
+                // withCredentials([file(
+                //     credentialsId: 'team8_host', 
+                //     variable: 'team8_host')
+                // ])
+                withCredentials([
+                    string(credentialsId: 'TEAM8_USERNAME', variable: 'TEAM8_USERNAME'), 
+                    string(credentialsId: 'TEAM8_FRONTEND_HOST', variable: 'TEAM8_FRONTEND_HOST'), 
+                    string(credentialsId: 'TEAM8_HOST_PASSWORD', variable: 'TEAM8_HOST_PASSWORD')])
+                {
                     script{
-                        echo "This is the content of the file `cat $team8_host`"
                         def remote = [:]
-                        remote.name = 'root'
-                        remote.host = '159.65.12.177'
-                        remote.user = 'root'
-                        remote.password = 'xitgmLwmp12q'
+                        remote.name = TEAM8_USERNAME
+                        remote.host = TEAM8_FRONTEND_HOST
+                        remote.user = TEAM8_USERNAME
+                        remote.password = TEAM8_HOST_PASSWORD
                         remote.allowAnyHosts = true
                         sshCommand remote: remote, command: "git clone -b main https://github.com/taritinth/sw-dev-tools-and-environments-project.git team-8-frontend"
                         sshCommand remote: remote, command: "docker-compose -f team-8-frontend/docker-compose-deploy.yml down"
