@@ -8,10 +8,11 @@
       <div class="flex flex-col items-center justify-center">
         <span class="text-2xl font-semibold text-gray-500">JobJab</span>
       </div>
-      <form method="post" @submit.prevent="login" class="mt-8">
+      <form method="post" class="mt-8" @submit.prevent="login">
         <!-- <input type="hidden" name="remember" value="true" /> -->
         <div class="mb-6">
           <input
+            id="email"
             v-model="$v.email.$model"
             class="w-full border border-gray-100 text-gray-900 text-sm rounded-2xl focus:ring-2 focus:outline-none block p-3"
             :class="{
@@ -20,7 +21,6 @@
               'focus:ring-blue-300': !$v.email.$error,
             }"
             type="text"
-            id="email"
             data-test="email"
             placeholder="E-Mail"
           />
@@ -32,6 +32,7 @@
         </div>
         <div class="mb-6">
           <input
+            id="password"
             v-model="$v.password.$model"
             class="w-full border border-gray-100 text-gray-900 text-sm rounded-2xl focus:ring-2 focus:outline-none block p-3"
             :class="{
@@ -40,7 +41,6 @@
               'focus:ring-blue-300': !$v.password.$error,
             }"
             type="password"
-            id="password"
             data-test="password"
             placeholder="Password"
           />
@@ -52,8 +52,8 @@
         </div>
         <div class="mt-12">
           <button
-          data-test="submit"
-            id="submit"
+          id="submit"
+            data-test="submit"
             type="submit"
             class="w-full text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
           >
@@ -78,11 +78,11 @@
 </template>
 
 <script>
-import { axios } from '@/plugins/axios'
-import { required, minValue } from 'vuelidate/lib/validators'
+import { required,  } from 'vuelidate/lib/validators'
+// import { axios } from '@/plugins/axios'
 
 export default {
-  name: 'signInPage',
+  name: 'SignInPage',
   middleware: ['isNotLoggedIn'],
   //   layout: 'dashboard',
   data() {

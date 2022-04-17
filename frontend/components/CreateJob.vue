@@ -12,10 +12,10 @@
     <!-- Modal header (close icon)-->
     <div class="flex justify-end">
       <button
-        @click="closeModal"
         type="button"
         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
         data-modal-toggle="popup-modal"
+        @click="closeModal"
       >
         <svg
           class="w-6 h-6"
@@ -47,9 +47,9 @@
               >Job title</label
             >
             <input
+              id="base-input"
               v-model="$v.title.$model"
               type="text"
-              id="base-input"
               placeholder="Job title"
               class="border border-gray-300 text-sm text-gray-900 rounded-2xl focus:ring-2 focus:outline-none block w-full p-3"
               :class="{
@@ -76,9 +76,9 @@
               >Overview</label
             >
             <input
+              id="base-input"
               v-model="$v.overview.$model"
               type="text"
-              id="base-input"
               placeholder="Overview"
               class="border border-gray-300 text-sm text-gray-900 rounded-2xl focus:ring-2 focus:outline-none block w-full p-3"
               :class="{
@@ -109,10 +109,10 @@
               >Due date</label
             >
             <input
-              disabled
-              v-model="$v.dueDate.$model"
-              type="text"
               id="base-input"
+              v-model="$v.dueDate.$model"
+              disabled
+              type="text"
               placeholder="Due date"
               class="border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-2 focus:outline-none block w-full p-3"
               :class="{
@@ -222,9 +222,9 @@
       </div>
     </div>
     <button
-      @click="createJob"
       type="button"
       class="w-full md:w-56 self-end text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mt-5"
+      @click="createJob"
     >
       Create
     </button>
@@ -233,9 +233,9 @@
 </template>
 
 <script>
-import { axios } from '@/plugins/axios'
-import JobTitle from './JobTitle.vue'
 import { required, minValue, maxLength } from 'vuelidate/lib/validators'
+import JobTitle from './JobTitle.vue'
+import { axios } from '@/plugins/axios'
 
 // import { VueEditor } from 'vue2-editor'
 
@@ -320,7 +320,7 @@ export default {
     getDateText(date) {
       if (date) {
         date = new Date(date)
-        let options = {
+        const options = {
           year: 'numeric',
           month: 'short',
           day: 'numeric',

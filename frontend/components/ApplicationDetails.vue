@@ -10,10 +10,10 @@
     <!-- Modal header (close icon)-->
     <div class="flex justify-end">
       <button
-        @click="closeModal"
         type="button"
         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
         data-modal-toggle="popup-modal"
+        @click="closeModal"
       >
         <svg
           class="w-6 h-6"
@@ -103,8 +103,8 @@
         </div>
 
         <div
-          v-html="application.job.description"
           class="flex flex-col items-start w-full pl-5 max-h-80 overflow-auto text-left"
+          v-html="application.job.description"
         ></div>
       </div>
       <!-- user info box -->
@@ -285,17 +285,17 @@
     >
       <button
         v-if="application.status == 'pending'"
-        @click="updateApplications('rejected')"
         type="button"
         class="w-full md:w-56 mr-3 text-red-400 bg-white border border-red-400 hover:text-white hover:bg-red-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mt-5"
+        @click="updateApplications('rejected')"
       >
         Reject
       </button>
       <button
         v-if="application.status == 'pending'"
-        @click="updateApplications('hired')"
         type="button"
         class="w-full md:w-56 text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mt-5"
+        @click="updateApplications('hired')"
       >
         Hire
       </button>
@@ -305,8 +305,8 @@
 </template>
 
 <script>
-import { axios } from '@/plugins/axios'
 import JobTitle from './JobTitle.vue'
+import { axios } from '@/plugins/axios'
 export default {
   components: { JobTitle },
   props: {
@@ -350,7 +350,7 @@ export default {
     getDateText(date) {
       if (date) {
         date = new Date(date)
-        let options = {
+        const options = {
           year: 'numeric',
           month: 'numeric',
           day: 'numeric',
@@ -365,7 +365,7 @@ export default {
     async updateApplications(status) {
       try {
         const data = {
-          status: status,
+          status,
         }
         const response = await axios.put(
           `/api/applications/${this.application._id}`,
