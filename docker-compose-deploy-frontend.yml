@@ -2,6 +2,6 @@ version: "3.9"
 
 services:
   frontend:
-    image: 808218764127/team-8-frontend:1.0.126
+    image: 808218764127/team-8-frontend:1.0.127
     ports:
       - "9999:5000"

@@ -1,8 +1,8 @@
 version: "3.9"
 services:
   frontend:
-    image: 808218764127/team-8-frontend:1.0.126
+    image: 808218764127/team-8-frontend:1.0.127
     build: ./frontend
   backend:
-    image: 808218764127/team-8-backend:1.0.83
+    image: 808218764127/team-8-backend:1.0.84
     build: ./backend
