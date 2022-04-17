@@ -25,11 +25,11 @@
           </div>
           <input
             v-model="query"
-            @input="onSearch"
             type="text"
             data-test="search-input"
             placeholder="What are you looking for..."
             class="border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-2 focus:ring-blue-300 focus:outline-none block w-full py-3 pl-12"
+            @input="onSearch"
           />
         </div>
         <!-- <div class="w-full sm:w-80">
@@ -50,10 +50,10 @@
         </div> -->
         <div class="w-full sm:w-80">
           <select
-            @input="onSearch"
             v-model="type"
             class="border border-gray-300 text-sm rounded-2xl focus:ring-2 focus:ring-blue-300 focus:outline-none block w-full p-3"
             :class="{ 'text-gray-400': !type }"
+            @input="onSearch"
           >
             <option value="">Job type</option>
             <option value="parttime">Part-time</option>
@@ -71,9 +71,9 @@
         <div
           v-for="(job, index) in jobs"
           :key="index"
-          @click="showJobDesc(job)"
           class="flex flex-col items-start justify-between rounded-3xl h-80 bg-white p-8 shadow-1 cursor-pointer"
           data-test="job"
+          @click="showJobDesc(job)"
         >
           <div class="block" data-test="job-overview">
             <job-title :title="job.title" :company="job.company" />
@@ -110,12 +110,12 @@
 </template>
 
 <script>
-import { axios } from '@/plugins/axios'
 import JobDescription from '../../components/JobDescription.vue'
 import JobTitle from '../../components/JobTitle.vue'
+import { axios } from '@/plugins/axios'
 
 export default {
-  name: 'Search',
+  name: 'SearchPage',
   components: { JobDescription, JobTitle },
   layout: 'dashboard',
   data() {
@@ -137,7 +137,7 @@ export default {
     await this.getJobs()
   },
   methods: {
-    async onSearch() {
+     onSearch() {
       clearTimeout(this.debounceSearch)
 
       this.debounceSearch = setTimeout(async () => {
@@ -177,7 +177,7 @@ export default {
         this.user = response.data
       } catch (e) {
         this.$toast.error('Sorry, Something went wrong. Please try again')
-        console.log(e)
+
       } finally {
         this.loading = false
       }

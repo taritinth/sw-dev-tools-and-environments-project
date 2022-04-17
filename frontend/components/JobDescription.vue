@@ -9,10 +9,10 @@
     <!-- Modal header (close icon)-->
     <div class="flex justify-end">
       <button
-        @click="closeModal"
         type="button"
         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
         data-modal-toggle="popup-modal"
+        @click="closeModal"
       >
         <svg
           class="w-6 h-6"
@@ -66,8 +66,8 @@
         </div>
 
         <div
-          v-html="job.description"
           class="flex flex-col items-start text-left w-full pl-5 max-h-80 overflow-auto"
+          v-html="job.description"
         ></div>
       </div>
     </div>
@@ -76,9 +76,9 @@
       v-if="
         !$auth.loggedIn || ($auth.loggedIn && $auth.user.type !== 'company')
       "
-      @click="applyJob"
       type="button"
       class="w-full md:w-56 self-end text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mt-5"
+      @click="applyJob"
     >
       Apply
     </button>
@@ -88,8 +88,8 @@
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
-import { axios } from '@/plugins/axios'
 import JobTitle from './JobTitle.vue'
+import { axios } from '@/plugins/axios'
 export default {
   components: { JobTitle },
   props: {
@@ -132,7 +132,7 @@ export default {
     getDateText(date) {
       if (date) {
         date = new Date(date)
-        let options = {
+        const options = {
           year: 'numeric',
           month: 'numeric',
           day: 'numeric',

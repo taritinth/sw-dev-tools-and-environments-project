@@ -8,12 +8,12 @@
       <div class="flex flex-col items-center justify-center">
         <span class="text-2xl font-semibold text-gray-500">JobJab</span>
       </div>
-      <form method="post" @submit.prevent="signUp" class="mt-8">
+      <form method="post" class="mt-8" @submit.prevent="signUp">
         <div v-if="config.companySignup" class="flex mb-6">
           <div class="flex items-center mr-3">
             <input
-              v-model="$v.type.$model"
               id="user-option-1"
+              v-model="$v.type.$model"
               type="radio"
               name="type"
               value="user"
@@ -32,8 +32,8 @@
 
           <div class="flex items-center">
             <input
-              v-model="$v.type.$model"
               id="user-option-2"
+              v-model="$v.type.$model"
               type="radio"
               name="type"
               value="company"
@@ -147,10 +147,11 @@
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
-import { axios } from '@/plugins/axios'
 import { required, sameAs } from 'vuelidate/lib/validators'
+import { axios } from '@/plugins/axios'
 
 export default {
+  name:'SignUpPage',
   middleware: ['isNotLoggedIn'],
   //   layout: 'general',
   data() {
@@ -169,14 +170,14 @@ export default {
     password: { required },
     confirmPassword: { required, sameAs: sameAs('password') },
   },
-  async mounted() {
-    await this.loadConfig()
-    // await this.getMovies()
-  },
   computed: {
     ...mapGetters({
       config: 'config/get',
     }),
+  },
+  async mounted() {
+    await this.loadConfig()
+    // await this.getMovies()
   },
   methods: {
     ...mapMutations({
@@ -216,8 +217,7 @@ export default {
         } catch (e) {
           this.$toast.error('Sorry, Something went wrong. Please try again')
           console.log(e)
-        } finally {
-        }
+        } 
       }
     },
     async loadConfig() {
@@ -231,8 +231,7 @@ export default {
       } catch (e) {
         this.$toast.error('Sorry, Something went wrong. Please try again')
         console.log(e)
-      } finally {
-      }
+      } 
     },
   },
 }

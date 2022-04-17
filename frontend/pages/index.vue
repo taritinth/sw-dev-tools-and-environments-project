@@ -15,16 +15,16 @@
               <p class="text-base text-gray-500">An internship is a short-term work experience offered by companies and other organizations for people usually students, but not alwaysto get some entry-level exposure to a particular industry or field.</p>
             </div>
             <button
+              type="button"
+              class="text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
+              style="height: fit-content"
+              data-test="explore-internship"
               @click="
                 $router.push({
                   path: '/search',
                   query: { query: '', type: 'internship' },
                 })
               "
-              type="button"
-              class="text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
-              style="height: fit-content"
-              data-test="explore-internship"
             >
               Explore
             </button>
@@ -50,16 +50,16 @@
             </div>
 
             <button
+              type="button"
+              class="text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
+              style="height: fit-content"
+              data-test="explore-fulltime"
               @click="
                 $router.push({
                   path: '/search',
                   query: { query: '', type: 'fulltime' },
                 })
               "
-              type="button"
-              class="text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
-              style="height: fit-content"
-              data-test="explore-fulltime"
             >
               Explore
             </button>
@@ -80,16 +80,16 @@
               </p>
             </div>
             <button
+              type="button"
+              class="text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
+              style="height: fit-content"
+              data-test="explore-parttime"
               @click="
                 $router.push({
                   path: '/search',
                   query: { query: '', type: 'parttime' },
                 })
               "
-              type="button"
-              class="text-white bg-blue-300 hover:bg-blue-400 font-medium rounded-2xl text-sm px-5 py-3 text-center mr-2 mb-2"
-              style="height: fit-content"
-              data-test="explore-parttime"
             >
               Explore
             </button>
@@ -107,7 +107,7 @@
 <script>
 import AnnouncementsList from '../components/AnnouncementsList.vue'
 export default {
-  name: 'Home',
+  name: 'HomePage',
   components: { AnnouncementsList },
   layout: 'dashboard',
   data() {

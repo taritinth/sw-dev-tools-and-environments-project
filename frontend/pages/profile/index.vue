@@ -88,14 +88,14 @@
               />
             </div>
             <input
+              id="profileFieldHandle"
+              ref="profile"
               type="file"
               multiple
               name="fields[profileFieldHandle][]"
-              id="profileFieldHandle"
               class="w-px h-px opacity-0 overflow-hidden absolute"
-              @change="uploadProfile"
-              ref="profile"
               accept=".jpg,.jpeg,.png"
+              @change="uploadProfile"
             />
             <label
               for="profileFieldHandle"
@@ -124,10 +124,10 @@
               >Fullname<span class="text-red-400">*</span></label
             >
             <input
-            data-test="fullname-input"
+            id="base-input"
               v-model="$v.user.fullname.$model"
+              data-test="fullname-input"
               type="text"
-              id="base-input"
               placeholder="Fullname"
               class="w-full border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-2 focus:outline-none block p-3"
               :class="{
@@ -160,10 +160,10 @@
               >Email<span class="text-red-400">*</span></label
             >
             <input
-              disabled
-              v-model="$v.user.email.$model"
-              type="text"
               id="base-input"
+              v-model="$v.user.email.$model"
+              disabled
+              type="text"
               placeholder="Email"
               class="border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-2 focus:outline-none block w-full p-3"
               :class="{
@@ -193,10 +193,10 @@
               >Phone<span class="text-red-400">*</span></label
             >
             <input
+              id="base-input"
               v-model="$v.user.phone.$model"
               type="text"
               data-test="phone-input"
-              id="base-input"
               placeholder="Phone"
               class="border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-2 focus:outline-none block w-full p-3"
               :class="{
@@ -231,10 +231,10 @@
               >Education</label
             >
             <input
+              id="base-input"
               v-model="$v.user.education.$model"
               data-test="education-input"
               type="text"
-              id="base-input"
               placeholder="University, School"
               class="border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-2 focus:ring-blue-300 focus:outline-none block w-full p-3"
             />
@@ -315,14 +315,14 @@
             class="text-center py-12 px-6 bg-white-100 rounded-2xl border-gray-300 border-dashed border-2"
           >
             <input
+              id="assetsFieldHandle"
+              ref="resume"
               type="file"
               multiple
               name="fields[assetsFieldHandle][]"
-              id="assetsFieldHandle"
               class="w-px h-px opacity-0 overflow-hidden absolute"
-              @change="uploadResume"
-              ref="resume"
               accept=".pdf,.jpg,.jpeg,.png"
+              @change="uploadResume"
             />
 
             <label for="assetsFieldHandle" class="block cursor-pointer">
@@ -382,13 +382,13 @@
 </template>
 
 <script>
+import { required, maxLength } from 'vuelidate/lib/validators'
 import { axios } from '@/plugins/axios'
-import { required, minValue, maxLength } from 'vuelidate/lib/validators'
 
 export default {
   name: 'ProfilePage',
-  middleware: ['auth'],
   layout: 'dashboard',
+  middleware: ['auth'],
   data() {
     return {
       user: null,

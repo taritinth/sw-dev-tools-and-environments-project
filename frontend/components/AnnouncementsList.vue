@@ -3,8 +3,8 @@
     <div v-if="loading" class="">Loading...</div>
     <div v-else class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <div
-        @click="showCreateJob"
         class="flex flex-col items-center justify-evenly rounded-3xl h-80 bg-white p-8 shadow-1 cursor-pointer"
+        @click="showCreateJob"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -16,10 +16,10 @@
         <span>Create new announcement</span>
       </div>
       <div
-        @click="showJobDesc(job)"
         v-for="(job, index) in announcements"
         :key="index"
         class="flex flex-col items-start justify-between rounded-3xl h-80 bg-white p-8 shadow-1 cursor-pointer"
+        @click="showJobDesc(job)"
       >
         <div class="block">
           <job-title :title="job.title" :company="job.company" />
@@ -66,9 +66,9 @@
   </div>
 </template>
 <script>
-import { axios } from '@/plugins/axios'
 import CreateJob from './CreateJob.vue'
 import JobDescription from './JobDescription.vue'
+import { axios } from '@/plugins/axios'
 
 export default {
   components: { CreateJob, JobDescription },
