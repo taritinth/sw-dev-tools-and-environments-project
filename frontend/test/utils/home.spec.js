@@ -4,6 +4,7 @@ import Home from '@/pages/index.vue'
 const $router = {
   push: jest.fn(),
 }
+
 describe('IndexPage', () => {
   let notLoggedIn
   let loggedIn

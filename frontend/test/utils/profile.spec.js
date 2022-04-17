@@ -1,8 +1,8 @@
-import {shallowMount } from '@vue/test-utils'
-import ProfilePage from '@/pages/profile/index.vue'
-import { axios } from '@/plugins/axios'
+import { shallowMount } from '@vue/test-utils'
 import MockAdapter from 'axios-mock-adapter'
 import flushPromises from 'flush-promises'
+import ProfilePage from '@/pages/profile/index.vue'
+import { axios } from '@/plugins/axios'
 const data = {
   _id: '620948092ad991e73d2f6011',
   fullname: 'Tarit Khanbo',
@@ -187,12 +187,12 @@ describe('ProfilePage', () => {
     const title = wrapper.find('[data-test="title"]')
     expect(title.text()).toEqual('Profile')
   })
-  
+
   test('Email input should be disabled', () => {
     const wrapper = shallowMount(ProfilePage, {
       mocks: {
-        $nuxt:{
-          $auth
+        $nuxt: {
+          $auth,
         },
         $auth,
         $router,
@@ -242,8 +242,8 @@ describe('ProfilePage', () => {
     })
 
     await flushPromises()
-      const fullnameLabel = wrapper.get('[data-test="fullname-label"]').text()
-      expect(fullnameLabel).toEqual('Fullname*')
+    const fullnameLabel = wrapper.get('[data-test="fullname-label"]').text()
+    expect(fullnameLabel).toEqual('Fullname*')
   })
 
   test('Should render Email label', async () => {
@@ -263,11 +263,11 @@ describe('ProfilePage', () => {
     })
 
     await flushPromises()
-      const emailLabel = wrapper.get('[data-test="email-label"]').text()
-      console.log(emailLabel)
-      expect(emailLabel).toEqual('Email*')
+    const emailLabel = wrapper.get('[data-test="email-label"]').text()
+    console.log(emailLabel)
+    expect(emailLabel).toEqual('Email*')
   })
-  
+
   test('Should render Phone label', async () => {
     mockAxios.onGet('/api/users/620948092ad991e73d2f6011').reply(200, data)
 
@@ -307,7 +307,7 @@ describe('ProfilePage', () => {
     const educationLabel = wrapper.find('[data-test="education-label"]').text()
     expect(educationLabel).toEqual('Education')
   })
-  
+
   test('Should render Resume label', async () => {
     mockAxios.onGet('/api/users/620948092ad991e73d2f6011').reply(200, data)
 
