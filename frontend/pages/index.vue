@@ -1,7 +1,7 @@
 <template>
   <div class="container md:max-w-screen-md lg:max-w-screen-lg mx-auto">
     <div class="pt-8">
-      <h1 class="mb-5 text-2xl text-gray-800 dark:text-gray-500" data-test="title">Home.</h1>
+      <h1 class="mb-5 text-2xl text-gray-800 dark:text-gray-500" data-test="title">Home</h1>
       <div
         v-if="!$auth.loggedIn || ($auth.loggedIn && $auth.user.type == 'user')"
         class="flex flex-col gap-6"
