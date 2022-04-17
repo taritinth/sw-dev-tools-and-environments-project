@@ -99,9 +99,8 @@ pipeline {
                         remote.password = TEAM8_HOST_PASSWORD
                         remote.allowAnyHosts = true
                         sshCommand remote: remote, command: "git clone -b main https://github.com/taritinth/sw-dev-tools-and-environments-project.git team-8-frontend"
-                        sshCommand remote: remote, command: "docker-compose -f team-8-frontend/docker-compose-deploy.yml down"
                         sshCommand remote: remote, command: "docker-compose -f team-8-frontend/docker-compose-build.yml build frontend"
-                        sshCommand remote: remote, command: "docker-compose -f team-8-frontend/docker-compose-deploy.yml up -d frontend"
+                        sshCommand remote: remote, command: "docker stack deploy --compose-file team-8-frontend/docker-compose-deploy-frontend.yml team-8-frontend"
                         sshCommand remote: remote, command: "rm -r team-8-frontend"
                     }
                 }
