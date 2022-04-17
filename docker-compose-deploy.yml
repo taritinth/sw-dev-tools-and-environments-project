@@ -29,11 +29,11 @@ services:
       - S3_BUCKET_NAME
       - JWT_SECRET
     environment:
-      - ATLAS_URI=/run/secrets/ATLAS_URI
-      - ATLAS_TEST_URI=/run/secrets/ATLAS_TEST_URI
-      - AWS_ID=/run/secrets/AWS_ID
-      - AWS_SECRET=/run/secrets/AWS_SECRET
-      - S3_BUCKET_NAME=/run/secrets/S3_BUCKET_NAME
-      - JWT_SECRET=/run/secrets/JWT_SECRET
+      - ATLAS_URI_FILE=/run/secrets/ATLAS_URI
+      - ATLAS_TEST_URI_FILE=/run/secrets/ATLAS_TEST_URI
+      - AWS_ID_FILE=/run/secrets/AWS_ID
+      - AWS_SECRET_FILE=/run/secrets/AWS_SECRET
+      - S3_BUCKET_NAME_FILE=/run/secrets/S3_BUCKET_NAME
+      - JWT_SECRET_FILE=/run/secrets/JWT_SECRET
     ports:
       - "9999:8081"
