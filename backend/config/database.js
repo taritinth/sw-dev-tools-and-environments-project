@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const secrets = require("./secrets");
 
 const mockData = require("../test/__mock__/data");
 
@@ -29,7 +30,7 @@ const connectMockDB = () =>
 const connectRealDB = () =>
   new Promise((resolve, reject) => {
     try {
-      mongoose.connect(process.env.ATLAS_URI);
+      mongoose.connect(secrets.read("ATLAS_URI") || process.env.ATLAS_URI);
       mongoose.connection.once("open", () => {
         console.log("MongoDB connection established successfully");
         resolve();
