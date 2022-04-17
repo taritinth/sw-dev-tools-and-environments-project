@@ -6,5 +6,25 @@ services:
       - "9999:5000"
   backend:
     image: 808218764127/team-8-backend:1.0.0
+    secrets:
+      - ATLAS_URI
+      - ATLAS_TEST_URI
+      - AWS_ID
+      - AWS_SECRET
+      - S3_BUCKET_NAME
+      - JWT_SECRET
     ports:
       - "9999:8081"
+secrets:
+    ATLAS_URI:
+      external: true
+    ATLAS_TEST_URI:
+      external: true
+    AWS_ID:
+      external: true
+    AWS_SECRET:
+      external: true
+    S3_BUCKET_NAME:
+      external: true
+    JWT_SECRET:
+      external: true
