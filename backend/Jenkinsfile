@@ -75,13 +75,8 @@ pipeline {
                         sshCommand remote: remote, command: "docker-compose -f team-8-backend/docker-compose-deploy.yml down"
                         sshCommand remote: remote, command: "docker-compose -f team-8-backend/docker-compose-build.yml build backend"
                         sshCommand remote: remote, command: "docker-compose -f team-8-backend/docker-compose-deploy.yml up -d backend"
+                        sshCommand remote: remote, command: "rm -r team-8-backend"
                     }
-                }
-             
-            }
-            post { 
-                always { 
-                    sshRemove remote: remote, path: "team-8-backend"
                 }
             }
         }

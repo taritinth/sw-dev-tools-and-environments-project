@@ -86,18 +86,6 @@ pipeline {
         }
         stage("Deploy:") {
             steps {
-                // withCredentials([
-                //     file(credentialsId: '2d6ba988-e935-4fd1-822b-c69cf81b9020', variable: 'team-8-host'),
-                //     [
-                //         usernameVariable: 'USERNAME', 
-                //         hostVariable: 'FRONTEND_HOST', 
-                //         passwordVariable: 'PASSWORD'
-                //     ]
-                // ]){
-                // withCredentials([file(
-                //     credentialsId: 'team8_host', 
-                //     variable: 'team8_host')
-                // ])
                 withCredentials([
                     string(credentialsId: 'TEAM8_USERNAME', variable: 'TEAM8_USERNAME'), 
                     string(credentialsId: 'TEAM8_FRONTEND_HOST', variable: 'TEAM8_FRONTEND_HOST'), 
@@ -114,13 +102,8 @@ pipeline {
                         sshCommand remote: remote, command: "docker-compose -f team-8-frontend/docker-compose-deploy.yml down"
                         sshCommand remote: remote, command: "docker-compose -f team-8-frontend/docker-compose-build.yml build frontend"
                         sshCommand remote: remote, command: "docker-compose -f team-8-frontend/docker-compose-deploy.yml up -d frontend"
+                        sshCommand remote: remote, command: "rm -r team-8-frontend"
                     }
-                }
-             
-            }
-            post { 
-                always { 
-                    sshRemove remote: remote, path: "team-8-frontend"
                 }
             }
         }
