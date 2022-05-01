@@ -1,4 +1,5 @@
 require("dotenv").config();
+const secrets = require("../config/secrets");
 const jwt = require("jsonwebtoken");
 const accessToken = secrets.read("JWT_SECRET") || process.env.JWT_SECRET;
 
